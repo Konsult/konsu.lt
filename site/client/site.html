@@ -1,0 +1,39 @@
+<head>
+  <title>Konsult</title>
+</head>
+
+<body>
+	<div class="page-header">
+		<h1>The Konsult Group</h1>
+	</div>
+	<div id="everything">
+		<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#115;&#64;&#107;&#111;&#110;&#115;&#117;&#46;&#108;&#116;">
+			<div class="hero-unit">
+				<h1>We do it all.<br>
+				We do it well.<br>
+				And we're coming soon.</h1>
+				<p>From mobile web programming, iOS app development, all the way down to robotics. We've got you covered.</p>
+
+				<div id="email" class="btn btn-primary btn-large">E-mail Us</div>
+			</div>
+		</a>
+
+		{{> services}}
+	</div>
+
+	<div id="footer">
+		&copy; The Konsult Group 2012
+	</div>
+
+</body>
+
+<template name="services">
+	<div class="serviceContainer">
+		{{#each serviceList}}
+		<div class="service">
+			<h2>{{serviceName}}</h2>
+			<div>{{serviceDescription}}</div>
+		</div>
+		{{/each}}
+	</div>
+</template>
