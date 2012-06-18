@@ -4,36 +4,35 @@
 
 <body>
 	<div class="page-header">
-		<h1>The Konsult Group</h1>
+		{{> Konsult}}
 	</div>
 	<div id="everything">
-		<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#115;&#64;&#107;&#111;&#110;&#115;&#117;&#46;&#108;&#116;">
 			<div class="hero-unit">
-				<h1>We do it all.<br>
-				We do it well.<br>
-				And we're coming soon.</h1>
-				<p>From mobile web programming, iOS app development, all the way down to robotics. We've got you covered.</p>
+				<h1>We build awesomeness</h1>
+				<p>From web to mobile, we do it all, and we do it well.</p>
 
-				<div id="email" class="btn btn-primary btn-large">E-mail Us</div>
+				<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#115;&#64;&#107;&#111;&#110;&#115;&#117;&#46;&#108;&#116;">
+					<div id="email">{{> FlipButton}}</div>
+				</a>
 			</div>
-		</a>
-
-		{{> services}}
 	</div>
 
 	<div id="footer">
-		&copy; The Konsult Group 2012
+		&copy; Konsult 2012
 	</div>
 
 </body>
 
-<template name="services">
-	<div class="serviceContainer">
-		{{#each serviceList}}
-		<div class="service">
-			<h2>{{serviceName}}</h2>
-			<div>{{serviceDescription}}</div>
-		</div>
-		{{/each}}
+<template name="FlipButton">
+	<div class="flipButton">
+		<div class="top btn-primary">Contact Us</div>
+		<div class="bottom btn-warning">E-mail</div>
+	</div>
+</template>
+
+<template name="Konsult">
+	<div class="konsult">
+		<div class="text"><h1>Konsult</h1></div>
+		<div class="engraving"><h1>Konsult</h1></div>
 	</div>
 </template>

@@ -1,10 +1,17 @@
 @defaultFontSize: 13px;
 @defaultLineHeight: 1.4em;
-@serviceMargin: 3%;
 @margin: 50px;
 
+@lightBackground: #555;
+@mediumBackground: #444;
+@darkBackground: #222;
+@darkText: #252525;
+
 html {
-	background-color: #252525;
+	background-color: @lightBackground;
+	background-image: -webkit-radial-gradient(50px 50px, 50% 200px, @lightBackground, fadeout(@lightBackground, 100%)),
+					  -webkit-linear-gradient(@mediumBackground, @darkBackground);
+	min-height: 100%;
 }
 
 body {
@@ -19,40 +26,55 @@ body {
 	background-color: transparent;
 }
 
-.serviceContainer {
-	clear: both;
-	color: #AAA;
+h1, h2, h3, h4, h5, h6 {
+	font-family: geneva, sanserif;
+	font-weight: bold;
 }
 
-.serviceContainer:after {
-	clear: both;
-	height: 1px;
-	width: 100%;
-	display: block;
-	content: " ";
-}
-
-.service {
-	float: left;
+.konsult {
 	position: relative;
-	vertical-align: top;
-	margin: @serviceMargin;
-	width: 100% / 3 - @serviceMargin * 2;
+	margin-top: @margin;
+	font-size: 20px;
+
+	.text h1, .engraving h1 {
+		padding: 0;
+		margin: 0;
+		font-size: 58px;
+	}
+
+	.text {
+		position: absolute;
+		top: 1px;
+		color: @darkText;
+		z-index: 2;
+
+		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+	}
+
+	.engraving {
+		color: black;
+		z-index: 1;
+
+		-webkit-user-select: none;
+	}
 }
 
-.hero-unit h1 {
-	margin-top: 0;
-	text-shadow: 0 2px 0 white;
+.btn {
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
 }
 
 .hero-unit {
 	text-shadow: 0 1px 0 white;
-	background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.1));
-	color: #222;
-}
-
-.hero-unit:hover {
 	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 50%, transparent 50%, rgba(0, 0, 0, 0.05));
+	color: #222;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+
+	text-align: center;
+
+	h1 {
+		margin-top: 0;
+		text-shadow: 0 2px 0 white;	
+	}
 }
 
 a {
@@ -69,17 +91,136 @@ a {
 	margin: 0 @margin;
 }
 
+#footer {
+	color: #888;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
 #email {
 	position: relative;
-	left: 50%;
-	margin-left: -50px;
+	margin: auto;
 	width: 100px;
-	box-sizing: border-box;
+
 	text-shadow: 0 -1px 0 black;
 }
 
-#footer {
-	color: #666;
+@flipButtonHeight: 3em;
+@flipButtonPadding: 1em;
+@flipButtonLineHeight: 0.75em;
+
+.flipButton {
+	position: relative;
+	width: 100%;
+
+	-webkit-perspective: 800px;
+
 	text-align: center;
-	margin-bottom: 10px;
+	height: @flipButtonHeight;
+
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+
+	.top,
+	.bottom {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		padding: @flipButtonPadding;
+		line-height: @flipButtonLineHeight;
+		font-weight: bold;
+		box-sizing: border-box;
+
+		-webkit-transition: -webkit-transform 0.25s ease-in-out;
+		-webkit-transition-property: -webkit-transform, opacity;
+		-webkit-backface-visibility: hidden;
+
+		-webkit-transition-delay: 0.25s;
+
+		border: 1px solid rgba(0, 0, 0, 0.05);
+	}
+
+	.top {
+		z-index: 2;
+	}
+
+	.bottom {
+		z-index: 1;
+	}
+}
+
+@flipButtonDelay: 0.1s;
+@flipButtonTimingFunction: ease-in-out;
+
+html.csstransitions {
+	.flipButton {
+		.top, .bottom {
+			-webkit-transition-delay: @flipButtonDelay;
+			-webkit-transition-timing-function: @flipButtonTimingFunction;
+		}
+	}
+}
+
+html:not(.csstransforms) {
+	.flipButton .bottom {
+		display: none;
+	}
+
+	.flipButton:hover .top {
+		background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+		box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.2);
+	}
+}
+
+html.csstransitions.csstransforms:not(.csstransforms3d) {
+	.flipButton {
+		.bottom {
+			opacity: 0;
+			-webkit-transform: translateY(100%);
+		}
+	}
+
+	.flipButton:hover {
+		.top {
+			-webkit-transform: translateY(-100%);
+			opacity: 0;
+		}
+
+		.bottom {
+			opacity: 1;
+			-webkit-transform: none;
+		}
+	}
+}
+
+html.csstransitions.csstransforms3d {
+	.flipButton {
+		.top {
+			-webkit-transform-origin: bottom;
+		}
+
+		.bottom {
+			-webkit-transform-origin: top;
+			-webkit-transform: translateY(100%) rotateX(-90deg);
+		}
+	}
+
+	.flipButton:hover {
+		.top {
+			-webkit-transform: translateY(-100%) rotateX(90deg);
+		}
+
+		.bottom {
+			-webkit-transform: none;
+		}
+	}
+}
+
+.flipButton:active {
+	.top, .bottom {
+		box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
+		background-image: none;
+	}
 }
