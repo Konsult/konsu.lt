@@ -1,17 +1,22 @@
 @defaultFontSize: 13px;
 @defaultLineHeight: 1.4em;
-@margin: 50px;
+@margin: 25px;
 
 @lightBackground: #555;
-@mediumBackground: #444;
-@darkBackground: #222;
-@darkText: #252525;
+@darkText: #000;
 
 html {
-	background-color: @lightBackground;
-	background-image: -webkit-radial-gradient(50px 50px, 50% 200px, @lightBackground, fadeout(@lightBackground, 100%)),
-					  -webkit-linear-gradient(@mediumBackground, @darkBackground);
+	background-color: #111;
 	min-height: 100%;
+	box-sizing: border-box;
+
+	background-image: url('/broken_noise.png');
+	background-image: -webkit-radial-gradient(50px 50px, 70% 50%, fadeout(@lightBackground, 50%), fadeout(@lightBackground, 100%)),
+					  url('/broken_noise.png');
+	background-image: -moz-radial-gradient(50px 50px, 70% 50%, fadeout(@lightBackground, 50%), fadeout(@lightBackground, 100%)),
+					  url('/broken_noise.png');
+	background-image: -o-radial-gradient(50px 50px, 70% 50%, fadeout(@lightBackground, 50%), fadeout(@lightBackground, 100%)),
+					  url('/broken_noise.png');
 }
 
 body {
@@ -33,7 +38,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .konsult {
 	position: relative;
-	margin-top: @margin;
+	margin: @margin;
 	font-size: 20px;
 
 	.text h1, .engraving h1 {
@@ -56,6 +61,8 @@ h1, h2, h3, h4, h5, h6 {
 		z-index: 1;
 
 		-webkit-user-select: none;
+		-moz-user-select: none;
+		-o-user-select: none;
 	}
 }
 
@@ -64,31 +71,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-unit {
-	text-shadow: 0 1px 0 white;
-	background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 50%, transparent 50%, rgba(0, 0, 0, 0.05));
-	color: #222;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+	color: white;
 
 	text-align: center;
 
-	h1 {
-		margin-top: 0;
-		text-shadow: 0 2px 0 white;	
-	}
+	background: none;
+	margin: 0;
+	padding: 0;
 }
 
 a {
 	text-decoration: none !important;
 }
 
+@spacing: 50px;
 #everything {
-	margin: 0 @margin;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: @spacing;
+	margin-bottom: @spacing;
+
+	padding: @spacing;
+	box-sizing: border-box;
 }
 
 .page-header {
 	border-bottom: none;
 	box-sizing: border-box;
-	margin: 0 @margin;
+	padding: 0;
+	margin: 0;
 }
 
 #footer {
@@ -114,6 +126,8 @@ a {
 	width: 100%;
 
 	-webkit-perspective: 800px;
+	-moz-perspective: 800px;
+	-o-perspective: 800px;
 
 	text-align: center;
 	height: @flipButtonHeight;
@@ -134,10 +148,18 @@ a {
 		box-sizing: border-box;
 
 		-webkit-transition: -webkit-transform 0.25s ease-in-out;
+		-moz-transition: -moz-transform 0.25s ease-in-out;
+		-o-transition: -o-transform 0.25s ease-in-out;
 		-webkit-transition-property: -webkit-transform, opacity;
+		-moz-transition-property: -moz-transform, opacity;
+		-o-transition-property: -o-transform, opacity;
 		-webkit-backface-visibility: hidden;
+		-moz-backface-visibility: hidden;
+		-o-backface-visibility: hidden;
 
 		-webkit-transition-delay: 0.25s;
+		-moz-transition-delay: 0.25s;
+		-o-transition-delay: 0.25s;
 
 		border: 1px solid rgba(0, 0, 0, 0.05);
 	}
@@ -158,7 +180,11 @@ html.csstransitions {
 	.flipButton {
 		.top, .bottom {
 			-webkit-transition-delay: @flipButtonDelay;
+			-moz-transition-delay: @flipButtonDelay;
+			-o-transition-delay: @flipButtonDelay;
 			-webkit-transition-timing-function: @flipButtonTimingFunction;
+			-moz-transition-timing-function: @flipButtonTimingFunction;
+			-o-transition-timing-function: @flipButtonTimingFunction;
 		}
 	}
 }
@@ -170,6 +196,8 @@ html:not(.csstransforms) {
 
 	.flipButton:hover .top {
 		background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+		background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
+		background-image: -o-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
 		box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.2);
 	}
 }
@@ -179,18 +207,24 @@ html.csstransitions.csstransforms:not(.csstransforms3d) {
 		.bottom {
 			opacity: 0;
 			-webkit-transform: translateY(100%);
+			-moz-transform: translateY(100%);
+			-o-transform: translateY(100%);
 		}
 	}
 
 	.flipButton:hover {
 		.top {
 			-webkit-transform: translateY(-100%);
+			-moz-transform: translateY(-100%);
+			-o-transform: translateY(-100%);
 			opacity: 0;
 		}
 
 		.bottom {
 			opacity: 1;
 			-webkit-transform: none;
+			-moz-transform: none;
+			-o-transform: none;
 		}
 	}
 }
@@ -199,21 +233,31 @@ html.csstransitions.csstransforms3d {
 	.flipButton {
 		.top {
 			-webkit-transform-origin: bottom;
+			-moz-transform-origin: bottom;
+			-o-transform-origin: bottom;
 		}
 
 		.bottom {
 			-webkit-transform-origin: top;
+			-moz-transform-origin: top;
+			-o-transform-origin: top;
 			-webkit-transform: translateY(100%) rotateX(-90deg);
+			-moz-transform: translateY(100%) rotateX(-90deg);
+			-o-transform: translateY(100%) rotateX(-90deg);
 		}
 	}
 
 	.flipButton:hover {
 		.top {
 			-webkit-transform: translateY(-100%) rotateX(90deg);
+			-moz-transform: translateY(-100%) rotateX(90deg);
+			-o-transform: translateY(-100%) rotateX(90deg);
 		}
 
 		.bottom {
 			-webkit-transform: none;
+			-moz-transform: none;
+			-o-transform: none;
 		}
 	}
 }
