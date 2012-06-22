@@ -48,5 +48,5 @@ Meteor.startup (function () {
   $(document).bind('pageinit', loadEventHandlers());
 })
 
-// Stop jQuery mobile from inserting stupid things into our page.
+// Stop jQuery mobile from inserting silly things into our page.
 $.mobile.autoInitializePage = false;
