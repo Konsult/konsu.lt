@@ -1,0 +1,106 @@
+@buttonBorderRadius: 7px;
+@buttonColor: rgb(0, 142, 255);
+@pressedButtonColor: darken(@buttonColor, 3%);
+@buttonPressedColor: rgb(0, 135, 252);
+@buttonTransitionDuration: 0.25s;
+
+.Button {
+  position: relative;
+  display: inline-block;
+  border-radius: @buttonBorderRadius;
+
+  border: 1px solid rgba(0, 125, 226, 1);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  cursor: pointer;
+
+  background-color: @buttonColor;
+  background-image: -webkit-linear-gradient(rgb(0, 142, 255), rgb(0, 138, 253));
+  background-image: -moz-linear-gradient(rgb(0, 142, 255), rgb(0, 138, 253));
+  background-image: -o-linear-gradient(rgb(0, 142, 255), rgb(0, 138, 253));
+  background-image: -ms-linear-gradient(rgb(0, 142, 255), rgb(0, 138, 253));
+  background-image: linear-gradient(rgb(0, 142, 255), rgb(0, 138, 253));
+
+  color: white;
+  text-shadow: 0 -1px black;
+  
+  font-weight: normal;
+
+  .ButtonInterior {
+    padding: 15px;
+    border-radius: @buttonBorderRadius;
+    -webkit-box-shadow: inset 0 1px 0 rgb(113, 202, 255);
+    box-shadow: inset 0 1px 0 rgb(113, 202, 255);
+    -webkit-transition: background-color 0.25s ease-in-out;
+    -moz-transition: background-color 0.25s ease-in-out;
+    -o-transition: background-color 0.25s ease-in-out;
+    -ms-transition: background-color 0.25s ease-in-out;
+    transition: background-color 0.25s ease-in-out;
+  }
+
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.Button.hover .ButtonInterior {
+  background-color: lighten(@buttonColor, 3%);
+}
+
+.Button.active .ButtonInterior {
+  background-color: @pressedButtonColor;
+  -webkit-box-shadow: inset 0 1px 0 rgba(113, 202, 255, 0.5);
+  box-shadow: inset 0 1px 0 rgba(113, 202, 255, 0.5);
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  -ms-transition-duration: 0s;
+  transition-duration: 0s;
+
+  background-image: -webkit-linear-gradient(darken(@pressedButtonColor, 5%), @pressedButtonColor);
+  background-image: -moz-linear-gradient(darken(@pressedButtonColor, 5%), @pressedButtonColor);
+  background-image: -o-linear-gradient(darken(@pressedButtonColor, 5%), @pressedButtonColor);
+  background-image: -ms-linear-gradient(darken(@pressedButtonColor, 5%), @pressedButtonColor);
+  background-image: linear-gradient(darken(@pressedButtonColor, 5%), @pressedButtonColor);
+}
+
+html.cssgradients.opacity {
+  .ButtonHighlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    border-radius: @buttonBorderRadius;
+    background-image: -webkit-radial-gradient(center 15%, 90% 100%, rgba(0, 250, 255, 0.25), rgba(0, 241, 255, 0) 50%, transparent 60%, rgba(0, 0, 0, 0.05));
+    background-image: -moz-radial-gradient(center 15%, 90% 100%, rgba(0, 250, 255, 0.25), rgba(0, 241, 255, 0) 50%, transparent 60%, rgba(0, 0, 0, 0.05));
+    background-image: -o-radial-gradient(center 15%, 90% 100%, rgba(0, 250, 255, 0.25), rgba(0, 241, 255, 0) 50%, transparent 60%, rgba(0, 0, 0, 0.05));
+    background-image: -ms-radial-gradient(center 15%, 90% 100%, rgba(0, 250, 255, 0.25), rgba(0, 241, 255, 0) 50%, transparent 60%, rgba(0, 0, 0, 0.05));
+    background-image: radial-gradient(center 15%, 90% 100%, rgba(0, 250, 255, 0.25), rgba(0, 241, 255, 0) 50%, transparent 60%, rgba(0, 0, 0, 0.05));
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+
+    -webkit-transition: opacity 0.25s ease-in-out;
+    -moz-transition: opacity 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out;
+    -ms-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+  }
+
+  .Button.hover .ButtonHighlight {
+    opacity: 1;
+  }
+
+  .Button.active {
+    .ButtonHighlight {
+      -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+      filter: alpha(opacity=100);
+      opacity: 1;
+    }
+  } 
+}

@@ -1,50 +1,25 @@
 <head>
   <title>Konsult</title>
-	<meta name = "viewport" content = "width = device-width">
   <link rel="SHORTCUT ICON" HREF="/favicon.ico" />
+	<meta name="viewport" content="initial-scale=0.5">
 </head>
 
 <body>
-		<div class="page-header">
-			{{> Konsult}}
-		</div>
-
-		<div id="scene">
-			<!-- <div id="theK" class="kIcon">
-			</div> -->
-			<div id="spot">
-			</div>
-			<div id="spotarea">
-			</div>
-			<div id="theK" class="kDoor">
-				<div id="leftdoor">
-					<div id="leftdoorback"></div>
-				</div>
-
-				<div id="secret" class="btn-primary">
-					<div id="contactus" class="secretbtn">
-						<br>
-						Contact Us
+		<div id="spotlightBlurbContainer">
+			<div id="spotlight"></div>
+			<div id="spotlightFloor"></div>
+			<div id="blurb">
+				<h1>Konsult</h1>
+				<p>we make cool things<br/>
+					on the web<br/>
+					&amp; on mobile
+				</p>
+				<div id="buttonContainer">
+					<div id="contactUs" class="Button">
+						<div class="ButtonHighlight"></div>
+						<div class="ButtonInterior">Contact Us</div>
 					</div>
-				</div>
-
-				<div id="rightdoor">
-					<div id="rightdoorback"></div>
 				</div>
 			</div>
 		</div>
 </body>
-
-<template name="FlipButton">
-	<div class="flipButton">
-		<div class="top btn-primary">Contact Us</div>
-		<div class="bottom btn-warning">E-mail</div>
-	</div>
-</template>
-
-<template name="Konsult">
-	<div class="konsult">
-		<div class="text"><h1>Konsult</h1></div>
-		<div class="engraving"><h1>Konsult</h1></div>
-	</div>
-</template>

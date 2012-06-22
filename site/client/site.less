@@ -1,417 +1,151 @@
-@defaultFontSize: 13px;
-@defaultLineHeight: 1.4em;
-@margin: 25px;
-
-@lightBackground: #555;
-@darkText: #000;
-
-#scene {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
-#spot {
-  position: absolute;
-  bottom: 30%;
-  left: 40%;
-  width: 288px;
-  height: 6%;
-  background-image: -webkit-radial-gradient(center, white, fadeout(@lightBackground, 0%));
-  box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-}
-.kIcon {
-	background-image: url("/logo1024.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-#theK{
-	position: absolute;
-	z-index: 100;
-	
-  bottom: 30%;
-  left: 41%;
-  width: 256px;
-  height: 256px;
-}
-
-#aboveTheK {
-	position: absolute;
-  bottom: 60%;
-  left: 41%;
-  z-index: 100;
-}
-.kDoor {
-  width: 256px;
-  height: 256px;
-}
-@openTime: 0.5s;
-
-#leftdoor {
-	position: absolute;
-	overflow: hidden;
-
-  top: 0px;
-  left: 0px;
-  width: 84px;
-  height: 256px;
-
-  -webkit-transition: left @openTime;
-}
-#leftdoorback {
-	position: absolute;
-
-  top: 0px;
-  left: 0px;
-  width: 256px;
-  height: 256px;
-
-	background-image: url("/logo1024.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-#rightdoor {
-	position: absolute;
-	overflow: hidden;
-
-  top: 0px;
-  left: 84px;
-  width: 172px;
-  height: 256px;
-
-  -webkit-transition: left @openTime;
-}
-.kDoor:hover >#rightdoor {
-  left: 134px;
-}
-.kDoor:hover >#leftdoor {
-  left: -50px;
-}
-#rightdoorback {
-	position: absolute;
-
-  top: 0px;
-  left: -85px;
-  width: 256px;
-  height: 256px;
-
-	background-image: url("/logo1024.png");
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
-#secret {
-	position: absolute;
-	overflow: hidden;
-
-	top: 125px;
-	left: 85px;
-	width: 1px;
-	height: 1px;
-
-	box-shadow: inset 0px 0px 3px 3px rgba(0, 0, 0, 0.5);
-
-	opacity: 0;
-	-webkit-transform: rotate(45deg) scale(0.000001, 0.000001) translateZ(0);
-
-	-webkit-transition: -webkit-transform @openTime, opacity @openTime;
-}
-.kDoor:hover > #secret {
-	top: 90px;
-	left: 49px;
-	width: 70px;
-	height: 70px;
-
-	opacity: 1;
-	-webkit-transform: rotate(45deg) translateZ(0);
-}
-.secretbtn {
-	position: absolute;
-	height: 100%;
-	width: 100%;
-
-	font-size: 16px;
-	text-align: center;
-
-	-webkit-transform: rotate(-45deg);
-}
-#contactus > a {
-	text-color: black;
-	z-index: 1000;
-}
-
-
-#spotarea {
-	position: absolute;
-  bottom: 25%;
-  left: 15%;
-  width: 70%;
-  min-width: 800px;
-  height: 15%;
-  background-image: -webkit-radial-gradient(center, fadeout(@lightBackground, 0%), transparent);
-  border-radius: 50%;
-}
-
 html {
-	background-color: #111;
-	min-height: 100%;
-	box-sizing: border-box;
-
-	background-image: url('/broken_noise.png');
-	background-image: -webkit-radial-gradient(50px 50px, 70% 50%, fadeout(@lightBackground, 50%), fadeout(@lightBackground, 100%)),
-					  url('/broken_noise.png');
-	background-image: -moz-radial-gradient(50px 50px, 70% 50%, fadeout(@lightBackground, 50%), fadeout(@lightBackground, 100%)),
-					  url('/broken_noise.png');
-	background-image: -o-radial-gradient(50px 50px, 70% 50%, fadeout(@lightBackground, 50%), fadeout(@lightBackground, 100%)),
-					  url('/broken_noise.png');
+	height: 100%;
 }
 
 body {
-	font-size: @defaultFontSize;
-	line-height: @defaultLineHeight;
-
+	background-image: url('/paper_2.jpg');
 	height: 100%;
 
 	padding: 0;
-	color: white;
-
-	background-color: transparent;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font-family: geneva, sanserif;
-	font-weight: bold;
-}
-
-.konsult {
-	position: relative;
-	margin: @margin;
+body, p {
 	font-size: 20px;
+	line-height: 1.2em;
+}
 
-	.text h1, .engraving h1 {
-		padding: 0;
-		margin: 0;
-		font-size: 58px;
+h1 {
+	font-size: 24px;
+	font-weight: normal;
+}
+
+html.fontface {
+	body, p {
+		font-family: "Aller";
+		font-weight: lighter;	
+	}
+}
+
+@centerWidth: 400px;
+@blurbWidth: 500px;
+@blurbOffset: -10px;
+
+#blurb {
+	position: absolute;
+	top: 30%;
+	margin-left: @blurbOffset;
+
+	width: @blurbWidth;
+
+	text-align: right;
+	text-shadow: 0 1px 0 #DDD;
+
+	z-index: 2;
+}
+
+html.cssgradients {
+
+	#spotlightBlurbContainer:before {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+
+		content: ' ';
+
+		background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 80%);
+		background-image: -moz-linear-gradient(rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 80%);
+		background-image: -o-linear-gradient(rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 80%);
+		background-image: -ms-linear-gradient(rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 80%);
+		background-image: linear-gradient(rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 80%);
+
+		z-index: 1;
 	}
 
-	.text {
+	#spotlightFloor {
 		position: absolute;
-		top: 1px;
-		color: @darkText;
-		z-index: 2;
+		margin-top: 150px;
+		top: 30%;
+		margin-left: @blurbOffset * 4 + (@blurbWidth - @centerWidth) / 2;
 
-		text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+		width: @centerWidth * 2;
+		height: 125px;
+
+		background-image: -webkit-radial-gradient(contain, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0));
+		background-image: -moz-radial-gradient(contain, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0));
+		background-image: -o-radial-gradient(contain, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0));
+		background-image: -ms-radial-gradient(contain, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0));
+		background-image: radial-gradient(contain, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0));
+		
+		z-index: 1;
 	}
 
-	.engraving {
-		color: black;
+	#spotlight {
+		position: absolute;
+		height: 100%;
+		width: 150px;
+
+		top: -55%;
+
+		background-image: -webkit-radial-gradient(contain, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+		background-image: -moz-radial-gradient(contain, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+		background-image: -o-radial-gradient(contain, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+		background-image: -ms-radial-gradient(contain, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+		background-image: radial-gradient(contain, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
+		
+		-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		transform: rotate(-45deg);
+		
+		-webkit-transform-origin: left center;
+		-moz-transform-origin: left center;
+		-o-transform-origin: left center;
+		-ms-transform-origin: left center;
+		transform-origin: left center;
+	}
+
+	#buttonContainer:after {
+		content: ' ';
+		position: relative;
 		z-index: 1;
 
-		-webkit-user-select: none;
-		-moz-user-select: none;
-		-o-user-select: none;
+		color: transparent;
+		text-shadow: none;
+
+		display: inline-block;
+		bottom: 19px; 
+		margin-left: 8%;
+		width: 120%;
+		height: 25px;
+
+		background-image: -webkit-radial-gradient(contain, rgba(0, 0, 0, 0.8), transparent);
+		background-image: -moz-radial-gradient(contain, rgba(0, 0, 0, 0.8), transparent);
+		background-image: -o-radial-gradient(contain, rgba(0, 0, 0, 0.8), transparent);
+		background-image: -ms-radial-gradient(contain, rgba(0, 0, 0, 0.8), transparent);
+		background-image: radial-gradient(contain, rgba(0, 0, 0, 0.8), transparent);
 	}
 }
 
-.btn {
-	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5) !important;
+.Button {
+	z-index: 2;
 }
 
-.hero-unit {
-	color: white;
-
-	text-align: center;
-
-	background: none;
-	margin: 0;
-	padding: 0;
-}
-
-a {
-	text-decoration: none !important;
-}
-
-@spacing: 50px;
-#everything {
-	width: 500px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: @spacing;
-	margin-bottom: @spacing;
-
-	padding: @spacing;
-	box-sizing: border-box;
-}
-
-.page-header {
-	border-bottom: none;
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
-}
-
-#footer {
-	color: #888;
-	text-align: center;
-	margin-bottom: 10px;
-}
-
-#email {
-	position: relative;
-	margin: auto;
-	width: 100px;
-
-	text-shadow: 0 -1px 0 black;
-}
-
-@flipButtonHeight: 3em;
-@flipButtonPadding: 1em;
-@flipButtonLineHeight: 0.75em;
-
-.flipButton {
-	position: relative;
+#spotlightBlurbContainer {
+	position: position: relative;
 	width: 100%;
+	height: 100%;
 
-	-webkit-perspective: 800px;
-	-moz-perspective: 800px;
-	-o-perspective: 800px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
 
-	text-align: center;
-	height: @flipButtonHeight;
-
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
-
-	.top,
-	.bottom {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-
-		padding: @flipButtonPadding;
-		line-height: @flipButtonLineHeight;
-		font-weight: bold;
-		box-sizing: border-box;
-
-		-webkit-transition: -webkit-transform 0.25s ease-in-out;
-		-moz-transition: -moz-transform 0.25s ease-in-out;
-		-o-transition: -o-transform 0.25s ease-in-out;
-		-webkit-transition-property: -webkit-transform, opacity;
-		-moz-transition-property: -moz-transform, opacity;
-		-o-transition-property: -o-transform, opacity;
-		-webkit-backface-visibility: hidden;
-		-moz-backface-visibility: hidden;
-		-o-backface-visibility: hidden;
-
-		-webkit-transition-delay: 0.25s;
-		-moz-transition-delay: 0.25s;
-		-o-transition-delay: 0.25s;
-
-		border: 1px solid rgba(0, 0, 0, 0.05);
-	}
-
-	.top {
-		z-index: 2;
-	}
-
-	.bottom {
-		z-index: 1;
-	}
+	z-index: 2;
 }
 
-@flipButtonDelay: 0.1s;
-@flipButtonTimingFunction: ease-in-out;
-
-html.csstransitions {
-	.flipButton {
-		.top, .bottom {
-			-webkit-transition-delay: @flipButtonDelay;
-			-moz-transition-delay: @flipButtonDelay;
-			-o-transition-delay: @flipButtonDelay;
-			-webkit-transition-timing-function: @flipButtonTimingFunction;
-			-moz-transition-timing-function: @flipButtonTimingFunction;
-			-o-transition-timing-function: @flipButtonTimingFunction;
-		}
-	}
-}
-
-html:not(.csstransforms) {
-	.flipButton .bottom {
-		display: none;
-	}
-
-	.flipButton:hover .top {
-		background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-		background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-		background-image: -o-linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0));
-		box-shadow: inset 0 -3px 3px rgba(0, 0, 0, 0.2);
-	}
-}
-
-html.csstransitions.csstransforms:not(.csstransforms3d) {
-	.flipButton {
-		.bottom {
-			opacity: 0;
-			-webkit-transform: translateY(100%);
-			-moz-transform: translateY(100%);
-			-o-transform: translateY(100%);
-		}
-	}
-
-	.flipButton:hover {
-		.top {
-			-webkit-transform: translateY(-100%);
-			-moz-transform: translateY(-100%);
-			-o-transform: translateY(-100%);
-			opacity: 0;
-		}
-
-		.bottom {
-			opacity: 1;
-			-webkit-transform: none;
-			-moz-transform: none;
-			-o-transform: none;
-		}
-	}
-}
-
-html.csstransitions.csstransforms3d {
-	.flipButton {
-		.top {
-			-webkit-transform-origin: bottom;
-			-moz-transform-origin: bottom;
-			-o-transform-origin: bottom;
-		}
-
-		.bottom {
-			-webkit-transform-origin: top;
-			-moz-transform-origin: top;
-			-o-transform-origin: top;
-			-webkit-transform: translateY(100%) rotateX(-90deg);
-			-moz-transform: translateY(100%) rotateX(-90deg);
-			-o-transform: translateY(100%) rotateX(-90deg);
-		}
-	}
-
-	.flipButton:hover {
-		.top {
-			-webkit-transform: translateY(-100%) rotateX(90deg);
-			-moz-transform: translateY(-100%) rotateX(90deg);
-			-o-transform: translateY(-100%) rotateX(90deg);
-		}
-
-		.bottom {
-			-webkit-transform: none;
-			-moz-transform: none;
-			-o-transform: none;
-		}
-	}
-}
-
-.flipButton:active {
-	.top, .bottom {
-		box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.25);
-		background-image: none;
-	}
+#buttonContainer {
+	position: relative;
+	display: inline-block;
+	padding: 0;
 }
