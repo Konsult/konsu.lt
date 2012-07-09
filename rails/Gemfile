@@ -12,6 +12,8 @@ gem 'json'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'less-rails'
+  gem 'therubyracer' # Needed to get around https://github.com/RailsApps/rails3-application-templates/issues/31
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
