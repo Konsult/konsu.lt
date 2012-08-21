@@ -1,0 +1,3 @@
+[submodule "rails/public/demos"]
+	path = rails/public/demos
+	url = git@github.com:Konsult/demos.git
