@@ -1,0 +1,70 @@
+@goldenRatio: 1.618;
+@primarySize: 18;
+@secondarySize: 15;
+
+.biggerFont (@baseSize, @ratio: 2) {
+  font-size: @baseSize * @ratio * @goldenRatio;
+}
+.smallerFont (@baseSize, @ratio: 2) {
+  font-size: @baseSize / @ratio * @goldenRatio;
+}
+
+@pageRotation: 25deg;
+
+.Page {
+  position: absolute;
+  opacity: 0;
+  display: none;
+
+  transform: translateZ(0);
+  transform-origin: 0 -2000px;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+  animation-duration: 0.25s;
+}
+.Page.Active {
+  display: block;
+  opacity: 1;
+}
+
+@keyframes rotate-in-cw {
+  0% {
+    opacity: 0;
+    display: block;
+    transform: translateZ(0) rotate(-@pageRotation);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rotate-in-ccw {
+  0% {
+    opacity: 0;
+    display: block;
+    transform: translateZ(0) rotate(@pageRotation);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rotate-out-cw {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(0) rotate(@pageRotation);
+  }
+}
+@keyframes rotate-out-ccw {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateZ(0) rotate(-@pageRotation);
+  }
+}

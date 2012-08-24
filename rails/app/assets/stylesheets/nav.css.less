@@ -1,0 +1,35 @@
+@goldenRatio: 1.618;
+@primarySize: 18;
+@secondarySize: 15;
+
+.biggerFont (@baseSize, @ratio: 2) {
+  font-size: @baseSize * @ratio * @goldenRatio;
+}
+.smallerFont (@baseSize, @ratio: 2) {
+  font-size: @baseSize / @ratio * @goldenRatio;
+}
+
+.NavContainer {
+
+  margin: 0 0 1em 0;
+  text-align: center;
+
+  border-bottom: 1px solid white;
+
+  box-sizing: border-box;
+
+  #buttonContainer {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid fade(black, 10%);
+    
+    box-sizing: border-box;
+    padding: 0.2em 1em;
+  }
+}
+
+.NavButton {
+  font-size: @primarySize * 1px;
+
+  text-shadow: 0 1px 0 white;
+}

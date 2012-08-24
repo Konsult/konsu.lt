@@ -1,169 +1,65 @@
-// Top-level z-indeces
-@z-header: 3;
-@z-footer: 2;
-@z-container: 1;
+@goldenRatio: 1.618;
+@primarySize: 18;
+@secondarySize: 15;
 
-@footerFontSize: 12px;
-
-html {
-  height: 100%;
+.biggerFont (@baseSize, @ratio: 2) {
+  font-size: @baseSize * @ratio * @goldenRatio;
 }
+.smallerFont (@baseSize, @ratio: 2) {
+  font-size: @baseSize / @ratio * @goldenRatio;
+}
+
+@z-nav: 2;
+@z-content: 1;
 
 body {
-  background-image: url('/assets/paper_2.jpg');
-  height: 100%;
+  font-family: "Aller Light";
+  font-size: @primarySize * 1px;
+  line-height: 1em;
 
-  padding: 0;
+  background-color: #EEE;
 }
 
-body, p {
-  font-size: 20px;
-  line-height: 1.2em;
+p {
+  line-height: @goldenRatio * 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Aller";
+  font-weight: normal;
+  line-height: 1em;
 }
 
 h1 {
-  font-size: 24px;
-  font-family: "Aller";
-  font-weight: normal;
+  font-weight: bold;
+  .biggerFont(@secondarySize * 1px, 3);
 }
-
-html.fontface {
-  body, p {
-    font-family: "Aller Light";
-  }
+h2 {
+  .biggerFont(@secondarySize * 1px, 2);
 }
-
-@centerWidth: 400px;
-@blurbWidth: 500px;
-@blurbOffset: -10px;
-
-#blurb {
-  position: absolute;
-  top: 30%;
-  margin-left: @blurbOffset;
-
-  width: @blurbWidth;
-
-  text-align: right;
-  text-shadow: 0 1px 0 #DDD;
-
-  z-index: 2;
-}
-
-html.cssgradients {
-
-  #spotlightBlurbContainer:before {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-
-    content: ' ';
-
-    background-image: linear-gradient(rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 80%);
-
-    z-index: 1;
-  }
-
-  #spotlightFloor {
-    position: absolute;
-    margin-top: 150px;
-    top: 30%;
-    margin-left: @blurbOffset * 4 + (@blurbWidth - @centerWidth) / 2;
-
-    width: @centerWidth * 2;
-    height: 125px;
-
-    background-image: radial-gradient(contain, rgba(255, 255, 255, 0.75) 60%, rgba(255, 255, 255, 0));
-    
-    z-index: 1;
-  }
-
-  #spotlight {
-    position: absolute;
-    height: 100%;
-    width: 150px;
-
-    top: -55%;
-
-    background-image: radial-gradient(contain, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0));
-    
-    transform: rotate(-35deg);
-    
-    transform-origin: left center;
-  }
-
-  #buttonContainer:after {
-    content: ' ';
-    position: relative;
-    z-index: 1;
-
-    color: transparent;
-    text-shadow: none;
-
-    display: inline-block;
-    bottom: 19px; 
-    margin-left: 8%;
-    width: 120%;
-    height: 25px;
-
-    background-image: radial-gradient(contain, rgba(0, 0, 0, 0.8), transparent);
-  }
+#footer {
+  .smallerFont(@secondarySize * 1px, 2);
 }
 
 .Button {
-  z-index: 2;
+  font-size: @primarySize * 1px;
+  line-height: 1em;
 }
 
-#spotlightBlurbContainer {
-  position: relative;
-  width: 100%;
-  height: 100%;
+.NavContainer {
+  @width: 100% / @goldenRatio;
 
-  box-sizing: border-box;
+  z-index: @z-nav;
 
-  z-index: @z-container;
-}
-
-#buttonContainer {
-  position: relative;
-  display: inline-block;
-  padding: 0;
-}
-
-#footer {
   position: absolute;
-  top: 0; right: 0;
+  top: 0;
+  left: (100% - @width) / 2;
+  width: @width;
+}
 
-  font-size: @footerFontSize;
-  line-height: @footerFontSize;
-  text-align: right;
-  padding: 1em;
+#pageContainer {
+  z-index: @z-content;
+  position: relative;
 
-  color: gray;
-  z-index: @z-footer;
-
-  a, a:visited {
-    display: inline-block;
-    padding: 0.5em;
-    border-radius: 5px;
-
-    color: rgb(219, 219, 219);
-    text-decoration: none;
-    font-weight: bold;
-    text-shadow: 0 -1px 0 fade(black, 25%);
-
-    background-color: fade(gray, 50%);
-  }
-  a:hover {
-    transform: translateY(-1px);
-    color: white;
-    background-color: #A9A9A9;
-    box-shadow: 0 1px 1px fade(black, 25%);
-  }
-  a:active {
-    transform: translateY(1px);
-    box-shadow: 0 1px 1px fade(white, 50%);
-  }
-
-  z-index: @z-header;
+  margin:  @primarySize * @goldenRatio * 3px;
 }

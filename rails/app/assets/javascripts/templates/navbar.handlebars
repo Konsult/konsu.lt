@@ -1,0 +1,7 @@
+<div id="buttonContainer">
+  {{#each App.pages}}
+    {{view App.NavButtonView indexBinding="index" labelBinding="shortName" clickHandlerBinding="App.navContainer.clickedButton"}}
+  {{/each}}
+</div>
+<div id="indicator">
+</div>
