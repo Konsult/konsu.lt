@@ -9,10 +9,6 @@ App.NavButtonView = App.ButtonView.extend({
     this._super(e);
     if (this.get("clickHandler"))
       this.get("clickHandler")(this);
-    this._super(e);
   },
 
-  lala: function (e) {
-    alert(this.get("label"));
-  }.observes("label"),
 });
