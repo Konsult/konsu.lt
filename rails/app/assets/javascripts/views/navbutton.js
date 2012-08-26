@@ -12,18 +12,18 @@ App.NavButtonView = App.ButtonView.extend({
   },
 
    mouseEnter: function (e) {
+    this._super(e);
     App.get("navContainer").moveIndicatorToButton(this);
   },
-  mouseLeave: function (e) {
-    App.get("navContainer").moveIndicatorToSelected();
-  },
   touchStart: function (e) {
+    this._super(e);
     this.mouseEnter(e);
   },
-  touchEnd: function (e) {
-    this.mouseLeave(e);
-  },
-  touchCancel: function (e) {
-    this.touchEnd(e);
-  }
+
+  stateChanged: function () {
+    if (this.get("on"))
+      this.$().addClass("On");
+    else
+      this.$().removeClass("On");
+  }.observes("on"),
 });

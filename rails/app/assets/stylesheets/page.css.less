@@ -2,16 +2,22 @@
 
 @pageRotation: 25deg;
 
+#pageContainer {
+  transform: translateZ(0);
+}
+
 .Page {
   position: absolute;
   opacity: 0;
   display: none;
 
+  padding-bottom: 2em;
+
   transform: translateZ(0);
   transform-origin: 0 -2000px;
   animation-timing-function: ease-in-out;
   animation-fill-mode: both;
-  animation-duration: 0.25s;
+  animation-duration: 0.5s;
 
   .Button {
     // Layered Aller Light looks ugly.

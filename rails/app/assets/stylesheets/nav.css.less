@@ -1,40 +1,43 @@
 @import "home.css.less";
 
 @indicatorWidth: 80px;
-@transitionDuration: 0.15s;
+@transitionDuration: 0.5s;
 
 .NavContainer {
 
   margin: 0 0 1em 0;
   text-align: center;
 
-
   box-sizing: border-box;
 
   #buttonContainer {
-    @width: 100% / @goldenRatio;
     position: relative;
-    width: @width;
-    left: (100% - @width) / 2;
+    width: 100%;
+  
+    // Remove spaces added during Ember html generation
+    font-size: 0;
+    // For some reason mobile Safari wants to highlight this element.
+    tap-highlight-color: transparent;
 
     box-sizing: border-box;
-    padding: 0.2em 1em;
+    @padding: 100% / @goldenRatio / 2;
+    padding-bottom: 0 @padding;
   }
   #buttonContainer:after {
     position: absolute;
-    bottom: 1px;
+    bottom: 0;
     left: 0;
     right: 0;
     height: 1px;
 
     content: "";
 
-    background-image: linear-gradient(left, transparent 2%, black 20%, black 80%, transparent 98%);    
+    background-image: linear-gradient(left, transparent 2%, black 20%, black 80%, transparent);    
     opacity: 0.1;
   }
   #buttonContainer:before {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
     right: 0;
     height: 1px;
@@ -48,18 +51,83 @@
 .NavButton {
   font-size: @primarySize * 1px;
   text-shadow: 0 1px 0 white;
+  border-radius: 0;
+  min-width: @indicatorWidth;
+
+  transition: background-color transitionDuration ease-in-out;
+  background-color: fade(white, 0);
+
+  .ButtonHighlight {
+      background-image: linear-gradient(bottom, white 2px, fade(white, 25%) 50%, fade(white, 0));
+      background-image: linear-gradient(bottom, white 2px, fade(white, 0) 50%),
+                        radial-gradient(left bottom, 25% 100%, fade(white, 50%), fade(white, 0)),
+                        radial-gradient(right bottom, 25% 100%, fade(white, 50%), fade(white, 0));
+      opacity: 0;
+      border-radius: 0;
+      transition-duration: @transitionDuration ease-in-out;
+      transition-property: opacity, box-shadow;
+  }
+}
+
+.NavButton.On {
+  background-color: fade(white, 50%);
+
+ .ButtonHighlight {
+    opacity: 1;
+      box-shadow: 0 0 3px fade(black, 10%);
+  }
+}
+.NavButton:not(.On).Hover .ButtonHighlight {
+  opacity: 0;
+}
+
+html:not(.cssgradients),
+html:not(.opacity) {
+  .NavButton {
+    background-color: transparent;
+  }
+  .NavButton.On {
+    background-color: white;
+  }
 }
 
 #indicator {
-  @width: 80px;
-  width: @width;
-  height: 10px;
+  @height: 5px;
+  @color: red;
+  @radius: @height;
+
+  // This is set by NavContainer after initialization.
+  opacity: 0;
 
   position: absolute;
   left: 50%;
-  margin-left: -@width / 2;
-  bottom: 1px;
+  bottom: 0;
 
-  background-color: red;
-  transition: transform 0.15s ease-out;
+  width: @indicatorWidth + 2 * @radius;
+  margin-left: -@indicatorWidth / 2 - @radius;
+  border-radius: @radius @radius 0 0;
+
+  height: @height;
+
+  background-color: @color;
+  transition: 0.15s ease-out;
+  transition-property: transform, opacity;
+
+  box-sizing: border-box;
+  border-bottom: 1px solid fade(black, 10%);
+
+  #point {
+    @side: ceil(@height / 3 * 2);
+    width: @side;
+    height: @side;
+
+    position: absolute;
+    top: -@side / 2;
+    left: 50%;
+    margin-left: -@side / 2;
+    transform: rotate(45deg);
+
+    background-color: @color;
+
+  }
 }
