@@ -12,12 +12,16 @@
 @z-nav: 2;
 @z-content: 1;
 
+.Background {
+  background-color: #EEE;
+}
+
 body {
+  .Background;
+
   font-family: "Aller Light";
   font-size: @primarySize * 1px;
   line-height: 1em;
-
-  background-color: #EEE;
 }
 
 p {
@@ -49,12 +53,15 @@ h2 {
 .NavContainer {
   @width: 100% / @goldenRatio;
 
+  .Background;
   z-index: @z-nav;
 
   position: absolute;
   top: 0;
   left: (100% - @width) / 2;
   width: @width;
+  // Prevent flashing on Safari
+  transform: translateZ(0);
 }
 
 #pageContainer {
