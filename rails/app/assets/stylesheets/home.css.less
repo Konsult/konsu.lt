@@ -51,15 +51,14 @@ h2 {
 }
 
 .NavContainer {
-  @width: 100% / @goldenRatio;
-
   .Background;
   z-index: @z-nav;
 
   position: absolute;
   top: 0;
-  left: (100% - @width) / 2;
-  width: @width;
+  left: 0;
+  right: 0;
+
   // Prevent flashing on Safari
   transform: translateZ(0);
 }

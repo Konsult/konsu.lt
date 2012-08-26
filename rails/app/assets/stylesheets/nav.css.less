@@ -14,22 +14,58 @@
   margin: 0 0 1em 0;
   text-align: center;
 
-  border-bottom: 1px solid white;
 
   box-sizing: border-box;
 
   #buttonContainer {
+    @width: 100% / @goldenRatio;
     position: relative;
-    width: 100%;
-    border-bottom: 1px solid fade(black, 10%);
-    
+    width: @width;
+    left: (100% - @width) / 2;
+
     box-sizing: border-box;
     padding: 0.2em 1em;
+  }
+  #buttonContainer:after {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+
+    content: "";
+
+    background-image: linear-gradient(left, transparent 2%, black 20%, black 80%, transparent 98%);    
+    opacity: 0.1;
+  }
+  #buttonContainer:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+
+    content: "";
+
+    background-image: linear-gradient(left, fade(white, 10%), white 20%, white 80%, fade(white, 10%));    
   }
 }
 
 .NavButton {
   font-size: @primarySize * 1px;
-
   text-shadow: 0 1px 0 white;
+}
+
+#indicator {
+  @width: 80px;
+  width: @width;
+  height: 10px;
+
+  position: absolute;
+  left: 50%;
+  margin-left: -@width / 2;
+  bottom: 1px;
+
+  background-color: red;
+  transition: transform 0.15s ease-out;
 }
