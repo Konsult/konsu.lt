@@ -11,3 +11,13 @@ var Rotation = {
   CW: "Rotation.CW", 
   CCW: "Rotation.CCW" 
 };
+
+var Platform = {
+  iPhone: "iPhone",
+  iPad: "iPad",
+  Android: "Android",
+  Safari: "Safari",
+  Chrome: "Chrome",
+  Firefox: "Firefox",
+  IE: "Internet Explorer",
+};

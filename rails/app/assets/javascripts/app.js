@@ -12,6 +12,7 @@ App.reopen({
     App.PageView.create({
       name: "Home",
       shortName: "Home",
+      logo: "/images/logo.png",
       templateName: "homepage",
       index: 0,
     }),
@@ -20,6 +21,51 @@ App.reopen({
       shortName: "Who",
       templateName: "aboutpage",
       index: 1,
+    }),
+    App.PageView.create({
+      name: "What We Do",
+      shortName: "What",
+      templateName: "whatpage",
+      index: 2,
+    }),
+    App.PageView.create({
+      name: "Contact Us",
+      shortName: "Contact",
+      templateName: "contactpage",
+      index: 3,
+    }),
+    App.PageView.create({
+      classNames: ["SamplePage"],
+      name: "Sample Works and Demos",
+      shortName: "Samples",
+      templateName: "samplepage",
+      index: 4,
+    }),
+  ],
+  samples: [
+    App.SampleWork.create({
+      title: "Face Invaders",
+      version: "Beta",
+      description: "It's a space invaders game where you shoot your Facebook friends! Contact us for access to the private beta.",
+      supportedPlatforms: [
+        Platform.Safari,
+        Platform.Chrome,
+        Platform.iPad,
+        Platform.Firefox,
+      ],
+      thumbnail: "/images/sample/invaders.png",
+    }),
+    App.SampleWork.create({
+      title: "Combination Dial",
+      description: "This password entry UI concept is specifically designed for touch devices.",
+      supportedPlatforms: [
+        Platform.iPhone,
+        Platform.iPad,
+        Platform.Safari,
+        Platform.Chrome,
+      ],
+      url: "http://konsu.lt/demos/SafeBoxDial/",
+      thumbnail: "/images/sample/dial.png",
     }),
   ],
 

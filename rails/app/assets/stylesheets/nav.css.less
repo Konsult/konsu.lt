@@ -56,6 +56,9 @@
   border-radius: 0;
   min-width: @indicatorWidth;
 
+  // Prevent flashing at large widths
+  transform: translateZ(0);
+  
   transition: background-color transitionDuration ease-in-out;
   background-color: fade(white, 0);
 
@@ -68,6 +71,12 @@
       border-radius: 0;
       transition-duration: @transitionDuration ease-in-out;
       transition-property: opacity, box-shadow;
+  }
+
+  .ButtonInterior {
+    background-size: auto 1em;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
 

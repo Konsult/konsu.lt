@@ -44,6 +44,9 @@ h1 {
 h2 {
   .biggerFont(@secondarySize * 1px, 2);
 }
+h3 {
+  .biggerFont(@primarySize * 1px, 1);
+}
 #footer {
   .smallerFont(@secondarySize * 1px, 2);
 }
@@ -67,8 +70,10 @@ h2 {
 }
 
 #pageContainer {
+  @spacing: @primarySize * @goldenRatio * 3px;
+
   z-index: @z-content;
   position: relative;
 
-  margin:  @primarySize * @goldenRatio * 3px;
+  margin: @spacing auto;
 }

@@ -4,10 +4,17 @@
 
 #pageContainer {
   transform: translateZ(0);
+
+  min-width: @goldenRatio * @primarySize * 20px;
+  max-width: @goldenRatio * @primarySize * 50px;
 }
 
 .Page {
+  @margin: @goldenRatio * @primarySize * 3px;
   position: absolute;
+  left: @margin;
+  right: @margin;
+
   opacity: 0;
   display: none;
 

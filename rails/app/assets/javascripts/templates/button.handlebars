@@ -1,2 +1,8 @@
 <div class="ButtonHighlight"></div>
-<div class="ButtonInterior">{{view.label}}</div>
+<div class="ButtonInterior" {{bindAttr style="view.logoStyle"}}>
+  {{#if view.logo}}
+    &nbsp;
+  {{else}}
+    {{view.label}}
+  {{/if}}
+</div>
