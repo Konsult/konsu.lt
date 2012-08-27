@@ -1,7 +1,9 @@
 @import "home.css.less";
 
 @indicatorWidth: 80px;
-@transitionDuration: 0.5s;
+@transitionDuration: 0.15s;
+
+@indicatorColor: red;
 
 .NavContainer {
 
@@ -70,6 +72,10 @@
 }
 
 .NavButton.On {
+  cursor: default;
+}
+
+.NavButton:not(.On).Hover {
   background-color: fade(white, 50%);
 
  .ButtonHighlight {
@@ -77,8 +83,14 @@
       box-shadow: 0 0 3px fade(black, 10%);
   }
 }
-.NavButton:not(.On).Hover .ButtonHighlight {
-  opacity: 0;
+.NavButton:not(.On).Active {
+  background-color: white;
+}
+
+.NavButton.On.Hover {
+  .ButtonHighlight {
+    opacity: 0;
+  }
 }
 
 html:not(.cssgradients),
@@ -86,14 +98,17 @@ html:not(.opacity) {
   .NavButton {
     background-color: transparent;
   }
-  .NavButton.On {
+  .NavButton.Hover {
     background-color: white;
+  }
+  .NavButton.Active {
+    background-color: @indicatorColor;
+    color: white;
   }
 }
 
 #indicator {
-  @height: 5px;
-  @color: red;
+  @height: 7px;
   @radius: @height;
 
   // This is set by NavContainer after initialization.
@@ -103,31 +118,48 @@ html:not(.opacity) {
   left: 50%;
   bottom: 0;
 
-  width: @indicatorWidth + 2 * @radius;
-  margin-left: -@indicatorWidth / 2 - @radius;
+  width: @indicatorWidth - 2 * @radius;
+  margin-left: -@indicatorWidth / 2 + @radius;
   border-radius: @radius @radius 0 0;
 
   height: @height;
 
-  background-color: @color;
-  transition: 0.15s ease-out;
+  background-color: @indicatorColor;
+  transition: @navTransitionDuration ease-out;
   transition-property: transform, opacity;
 
   box-sizing: border-box;
+  border-top: 1px solid fade(orange, 100%);
   border-bottom: 1px solid fade(black, 10%);
 
   #point {
-    @side: ceil(@height / 3 * 2);
+    @side: round(@height / 1.5);
     width: @side;
     height: @side;
 
     position: absolute;
-    top: -@side / 2;
+    top: -@side;
     left: 50%;
     margin-left: -@side / 2;
+    transform-origin: bottom left;
     transform: rotate(45deg);
 
-    background-color: @color;
+    background-color: @indicatorColor;
 
+    box-sizing: border-box;
+    border-left: 1px solid fade(orange, 100%);
+    border-top: 1px solid fade(orange, 100%);
+
+  }
+}
+
+html:not(.csstransforms) {
+  #indicator {
+    display: none;
+  }
+
+  .NavButton.On {
+    background-color: @indicatorColor;
+    color: white;
   }
 }

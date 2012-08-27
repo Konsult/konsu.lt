@@ -26,7 +26,11 @@ App.NavContainer = Em.View.extend({
   },
 
   clickedButton: function (button) {
-    App.navContainer._selectedButton().set("on", false);
+    var selected = App.navContainer._selectedButton();
+    if (button === selected)
+      return;
+
+    selected.set("on", false);
     var container = App.get("navContainer");
     var index = button.get("index");
     container.set("selectedIndex", index);
@@ -42,7 +46,7 @@ App.NavContainer = Em.View.extend({
   },
 
   moveIndicatorToSelected: function () {
-    this._moveIndicator(this._selectedButton().$(), 0.15);
+    this._moveIndicator(this._selectedButton().$());
   },
 
   // Privates

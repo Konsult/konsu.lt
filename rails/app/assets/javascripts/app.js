@@ -42,7 +42,7 @@ App.reopen({
   changedPage: function () {
     var oldIndex = this.get("currentPage");
     var index = this.get("navContainer").get("selectedIndex");
-    var rotation = oldIndex < index ? Rotation.CW : Rotation.CCW;
+    var rotation = oldIndex < index ? Rotation.CCW : Rotation.CW;
 
     if (oldIndex >= 0)
       this.get("pages")[oldIndex].rotateOut(rotation);
