@@ -1,6 +1,7 @@
 @import "home.css.less";
 
 @pageRotation: 10deg;
+@pagePadding: 2em;
 
 #pageContainer {
   transform: translateZ(0);
@@ -12,13 +13,17 @@
 .Page {
   @margin: @goldenRatio * @primarySize * 3px;
   position: absolute;
+  top: 0;
   left: @margin;
   right: @margin;
 
   opacity: 0;
   display: none;
 
-  padding-bottom: 2em;
+  box-sizing: border-box;
+  padding-top: @margin;
+  padding-bottom: @margin;
+  min-height: 100%;
 
   transform: translateZ(0);
   transform-origin: 0 -2000px;
@@ -34,6 +39,11 @@
 .Page.Active {
   display: block;
   opacity: 1;
+}
+
+.Page:after {
+  .Footer;
+  height: @pagePadding;
 }
 
 @keyframes rotate-in-cw {
