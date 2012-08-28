@@ -18,11 +18,6 @@ App.NavContainer = Em.View.extend({
     indicator.one(M.prefixed("transitionEnd"), function () {
       indicator.css("opacity", 1);
     });
-
-    var that = this;
-    this.$().children("#buttonContainer").on("mouseleave touchleave touchend touchcancel", function (e) {
-      that.moveIndicatorToSelected();
-    });
   },
 
   clickedButton: function (button) {
@@ -41,22 +36,11 @@ App.NavContainer = Em.View.extend({
     this._selectedButton().set("on", true);
   }.observes("selectedIndex"),
 
-  moveIndicatorToButton: function (navButtonView) {
-    this._moveIndicator(navButtonView.$());
-  },
-
   moveIndicatorToSelected: function () {
-    this._moveIndicator(this._selectedButton().$());
-  },
-
-  // Privates
-
-  _moveIndicator: function (button, delay) {
+    var button = this._selectedButton().$();
     var buttonCenter = button.offset().left + button.width() / 2;
     var pageCenter = $(window).width() / 2;
-    var indicator = this.get("indicator");
-    indicator.css(M.prefixed("transform"), "translateX(" + Math.round(buttonCenter - pageCenter) + "px)");
-    indicator.css(M.prefixed("transitionDelay"), delay ? delay + "s" : "0s");
+    this.get("indicator").css(M.prefixed("transform"), "translateX(" + Math.round(buttonCenter - pageCenter) + "px)");
   },
 
   _selectedButton: function () {
