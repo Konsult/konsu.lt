@@ -72,6 +72,13 @@ App.reopen({
   currentPage: -1,
 
   ready: function () {
+    var optimalWidth = 532;
+    var deviceWidth = $(window).width();
+    if (deviceWidth < optimalWidth) {
+      var scale = (deviceWidth / optimalWidth).toFixed(2);
+      $("meta[name=viewport]").attr("content", "width=" + optimalWidth + ", initial-scale=" + scale);
+    }
+
     var pageContainer = $("<div id='pageContainer'>");
     var pages = App.get("pages");
     for (var i = 0; i < App.pages.length; i++) {
