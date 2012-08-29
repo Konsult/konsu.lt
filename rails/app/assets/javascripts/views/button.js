@@ -1,7 +1,7 @@
 App.ButtonView = Em.View.extend({
   classNames: ["Button"],
   templateName: "button",
-  colors: ["Blue", "None"],
+  colors: ["Blue", "White", "None"],
   hover: false,
   active: false,
 

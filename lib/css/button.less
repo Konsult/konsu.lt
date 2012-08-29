@@ -23,9 +23,6 @@
 
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-.Button.Active .ButtonInterior {
-  transition-duration: 0s;
-}
 
 .Button:not(.None) {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
@@ -34,6 +31,9 @@
     transition: background-color 0.25s ease-in-out;    
   }
 }
+.Button.Active .ButtonInterior {
+  transition-duration: 0s;
+}
 
 @blueButtonColor: rgb(0, 142, 255);
 @pressedBlueButtonColor: darken(@blueButtonColor, 3%);
@@ -41,7 +41,7 @@
   background-color: @blueButtonColor;
   background-image: linear-gradient(rgb(0, 142, 255), rgb(0, 138, 253));
 
-  border: 1px solid rgba(0, 125, 226, 1);
+  border: 1px solid rgb(0, 125, 226);
 
   color: white;
   text-shadow: 0 -1px black;
@@ -58,6 +58,25 @@
   box-shadow: inset 0 1px 0 rgba(113, 202, 255, 0.5);
 
   background-image: linear-gradient(darken(@pressedBlueButtonColor, 5%), @pressedBlueButtonColor);
+}
+
+@whiteButtonColor: rgb(240, 240, 240);
+@pressedWhiteButtonColor: darken(@whiteButtonColor, 3%);
+.Button.White {
+  background-color: @whiteButtonColor;
+  background-image: linear-gradient(@whiteButtonColor, @whiteButtonColor);
+  border: 1px solid darken(@pressedWhiteButtonColor, 5%);
+
+  .ButtonInterior {
+    box-shadow: inset 0 1px 0 lighten(@whiteButtonColor, 5%);
+  }
+}
+.Button.White.Hover .ButtonInterior {
+  background-color: lighten(@whiteButtonColor, 3%);
+}
+.Button.White.Active .ButtonInterior {
+  background-color: @pressedWhiteButtonColor;
+  box-shadow: inset 0 1px 0 lighten(@pressedWhiteButtonColor, 5%);
 }
 
 .ButtonHighlight {
@@ -90,3 +109,6 @@
 .Button.Blue .ButtonHighlight {
   background-image: radial-gradient(center 15%, 90% 100%, rgba(0, 250, 255, 0.25), rgba(0, 241, 255, 0) 50%, transparent 60%, rgba(0, 0, 0, 0.05));
 } 
+.Button.White .ButtonHighlight {
+  background-image: radial-gradient(center 15%, 90% 100%, fade(white, 50%), fade(white, 0) 50%, transparent 60%, rgba(0, 0, 0, 0.05));
+}
