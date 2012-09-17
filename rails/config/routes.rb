@@ -1,6 +1,6 @@
 RailsSite::Application.routes.draw do
   root :to => "home#index"
-  match '/*paths' => redirect('/')
+  match '/*paths' => "home#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,4 +1,6 @@
 var M = {
+  html: null,
+
   eventMapping: {
     "WebkitTransition": "webkitTransitionEnd",
     "MozTransition": "transitionend",
@@ -19,5 +21,11 @@ var M = {
     if (property === "animationEnd")
       return M.eventMapping[Modernizr.prefixed("animation")];
     return Modernizr.prefixed(property);
+  },
+
+  has: function (feature) {
+    if (!M.html)
+      M.html = $("html");
+    return M.html.hasClass(feature);
   },
 };

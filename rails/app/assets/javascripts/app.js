@@ -7,7 +7,27 @@
 //= require_self
 
 App.reopen({
-  navContainer: App.NavContainer.create(),
+  navContainer: App.NavContainer.create({
+    clickedButton: function (button) {
+      this._super(button);
+
+      if (!M.has("history"))
+        return;
+
+      var index = App.get("navContainer").get("selectedIndex");
+      if (index === 0)
+        history.pushState(null, null, "/");
+      else
+        history.pushState(null, null, "/" + App.get("pages")[App.get("currentPage")].get("shortName"));
+    },
+
+    didInsertElement: function () {
+      this._super();
+      // This requires the elements to be in the DOM. Otherwise it should be in ready.
+      App.updateNavToCurrentPath();
+      App.updatePageToNavIndex(true);
+    }
+  }),
   pages: [
     App.PageView.create({
       name: "Home",
@@ -90,19 +110,66 @@ App.reopen({
     var root = $(App.rootElement);
     this.get("navContainer").appendTo(root);
     root.append(pageContainer);
+
+    if (M.has("history")) {
+      $(window).on("popstate", function (e) {
+        App.updateNavToCurrentPath();
+      });
+    }
   }, // ready
 
-  changedPage: function () {
-    var oldIndex = this.get("currentPage");
+  updatePageToNavIndex: function (isInit) {
     var index = this.get("navContainer").get("selectedIndex");
+    var oldIndex = this.get("currentPage");
+    var pages = this.get("pages");
+
+    if (!isInit && oldIndex === index)
+      return; 
     var rotation = oldIndex < index ? Rotation.CCW : Rotation.CW;
-
     if (oldIndex >= 0)
-      this.get("pages")[oldIndex].rotateOut(rotation);
-
-    this.get("pages")[index].rotateIn(rotation);
+      pages[oldIndex].rotateOut(rotation);
+    
+    var newPage = pages[index];
+    newPage.rotateIn(rotation);
     this.set("currentPage", index);
   }.observes("navContainer.selectedIndex"),
+
+  updateNavToCurrentPath: function () {
+    var indexOfSlash = location.pathname.lastIndexOf("/");
+    if (isNaN(indexOfSlash)) {
+      console.log("Can't find page name for path " + location.pathname);
+      return;
+    }
+
+    // Find the corresponding page index.
+    var name = location.pathname.substring(indexOfSlash + 1);
+    var index = -1;
+    var pages = this.get("pages");
+    if (name.length === 0)
+      index = 0;
+    else {
+      for (var i = 0; i < pages.length; i++) {
+        if (pages[i].get("shortName") === name) {
+          index = i;
+          break;
+        }
+      }
+    }
+
+    // Go to page.
+    if (index === -1) {
+      console.log("Cannot find page " + location.pathname);
+      // Fall back to homepage.
+      if (!M.has("history")) {
+        location.replace(location.origin);
+        return;
+      }
+      index = 0;
+      history.replaceState(null, null, "/");
+    }
+
+    this.get("navContainer").set("selectedIndex", index);
+  },
 });
 
 // App.initialize();

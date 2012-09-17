@@ -4,7 +4,7 @@ App.NavContainer = Em.View.extend({
   indicator: null,
 
   // Settable properties
-  selectedIndex: -1,
+  selectedIndex: 0,
 
   didInsertElement: function () {
     var indicator = this.$().children("#indicator")
@@ -13,7 +13,12 @@ App.NavContainer = Em.View.extend({
     var selectedButton = this._selectedButton();
     if (selectedButton)
       selectedButton.set("on", false);
-    this.set("selectedIndex", 0);
+    
+    // Trigger indicator and button setup without changing the index.
+    // We need to do this because some actions only take effect
+    // after the element is inserted into the DOM.
+    this.indexChanged();
+
     // Show the indicator after it's moved into place for the 1st page.
     indicator.one(M.prefixed("transitionEnd"), function () {
       indicator.css("opacity", 1);
@@ -38,6 +43,9 @@ App.NavContainer = Em.View.extend({
 
   moveIndicatorToSelected: function () {
     var button = this._selectedButton().$();
+    if (!button)
+      return;
+
     var buttonCenter = button.offset().left + button.width() / 2;
     var pageCenter = $(window).width() / 2;
     this.get("indicator").css(M.prefixed("transform"), "translateX(" + Math.round(buttonCenter - pageCenter) + "px)");
