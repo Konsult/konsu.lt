@@ -49,6 +49,23 @@
     background-image: linear-gradient(left, fade(white, 10%), white 20%, white 80%, fade(white, 10%));    
   }
 }
+html:not(.cssgradients) {
+  .NavContainer #buttonContainer:before {
+    background-color: #F6F6F6;
+  }
+  .NavContainer #buttonContainer:after {
+    background-color: #DDD;
+    opacity: 1;
+  }
+}
+html:not(.generatedcontent) {
+  .NavContainer {
+    border-bottom: 1px solid #DDD;
+    #buttonContainer {
+      border-bottom: 1px solid #F6F6F6;
+    }
+  }
+}
 
 .NavButton {
   font-size: @primarySize * 1px;
