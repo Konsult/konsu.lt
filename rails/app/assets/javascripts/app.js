@@ -148,8 +148,9 @@ App.reopen({
     if (name.length === 0)
       index = 0;
     else {
+      var nameRegex = new RegExp("^" + name + "$", "i");
       for (var i = 0; i < pages.length; i++) {
-        if (pages[i].get("shortName") === name) {
+        if (nameRegex.test(pages[i].get("shortName"))) {
           index = i;
           break;
         }
