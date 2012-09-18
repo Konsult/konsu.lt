@@ -20,9 +20,13 @@ App.NavContainer = Em.View.extend({
     this.indexChanged();
 
     // Show the indicator after it's moved into place for the 1st page.
-    indicator.one(M.prefixed("transitionEnd"), function () {
+    var transitionEnd = M.prefixed("transitionEnd");
+    if (transitionEnd) {
+      indicator.one(M.prefixed("transitionEnd"), function () {
+        indicator.css("opacity", 1);
+      });
+    } else
       indicator.css("opacity", 1);
-    });
   },
 
   clickedButton: function (button) {
