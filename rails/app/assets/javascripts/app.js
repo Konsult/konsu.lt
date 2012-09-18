@@ -161,7 +161,7 @@ App.reopen({
       console.log("Cannot find page " + location.pathname);
       // Fall back to homepage.
       if (!M.has("history")) {
-        location.replace(location.origin);
+        location.replace(location.getOrigin());
         return;
       }
       index = 0;
