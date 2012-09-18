@@ -17,23 +17,33 @@ App.PageView = Em.View.extend({
     var thatRot = rotation;
 
     function applyTransition () {
-      switch (thatRot) {
-        case Rotation.CW:
-          el.css(M.prefixed("animationName"), "rotate-" + dirStr + "-cw");
-          break;
-        case Rotation.CCW:
-          el.css(M.prefixed("animationName"), "rotate-" + dirStr + "-ccw");
-          break;
-      }
-      el.one(M.prefixed("animationEnd"), function () {
+      var animationName = M.prefixed("animationName");
+
+      function finishTransition () {
         if (dirStr === "in") {
           el.addClass("Active");
           // Remove the manual setting of display
           el.css("display", "");
         } else 
           el.removeClass("Active");
-        el.css(M.prefixed("animationName"), "");      
-      });
+        if (animationName)
+          el.css(animationName, "");      
+      }
+
+      if (!animationName) {
+        finishTransition();
+        return;
+      }
+
+      switch (thatRot) {
+        case Rotation.CW:
+          el.css(animationName, "rotate-" + dirStr + "-cw");
+          break;
+        case Rotation.CCW:
+          el.css(animationName, "rotate-" + dirStr + "-ccw");
+          break;
+      }
+      el.one(M.prefixed("animationEnd"), finishTransition);
     }
 
     if (direction == Direction.In) {
