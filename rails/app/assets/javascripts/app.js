@@ -56,8 +56,8 @@ App.reopen({
     }),
     App.PageView.create({
       classNames: ["SamplePage"],
-      name: "Sample Works and Demos",
-      shortName: "Samples",
+      name: "Demos and Sample Work",
+      shortName: "Demos",
       templateName: "samplepage",
       index: 4,
     }),
