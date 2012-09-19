@@ -1,7 +1,7 @@
 App.PageView = Em.View.extend({
   classNames: ["Page"],
+  classNameBindings: ["templateName"],
   name: "",
-  label: "",
 
   rotateOut: function (rotation) {
     this.rotateTransition(rotation, Direction.Out);

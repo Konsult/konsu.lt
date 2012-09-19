@@ -18,6 +18,10 @@
 
 #blogLink {
   padding-bottom: @goldenRatio * 1em;
+  position: relative;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: inherit;
 }
 
 .SampleWork {
@@ -36,6 +40,7 @@
   padding: 0 @padding 0 @padding;
 
   .Thumbnail {
+    .WhiteFramedPhoto;
     position: relative;
     width: 100%;
     // Make a square image at its smallest.
@@ -43,10 +48,6 @@
 
     background-size: cover;
     background-position: center;
-
-    box-sizing: border-box;
-    border: 5px solid white;
-    box-shadow: inset 0 1px 3px fade(black, 15%), 0 3px 5px fade(black, 50%);
 
     transform-origin: top;
 

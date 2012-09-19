@@ -1,0 +1,52 @@
+@import "home.css.less";
+
+.aboutpage {
+  @personPhotoSide: 150px;
+  @photoSpacing: @personPhotoSide + @primarySize * @goldenRatio;
+
+  max-width: @maxWidth;
+  margin-left: auto;
+  margin-right: auto;
+
+  .Person {
+    .Photo {
+      .WhiteFramedPhoto;
+
+      background-position: center;
+      width: @personPhotoSide;
+      height: @personPhotoSide;
+
+      float: left;
+
+      transform: rotate(-5deg);
+    }
+
+    .Info {
+      margin-left: @photoSpacing;
+      text-align: justify;
+    }
+
+    clear: both;
+  }
+
+  .Person:not(:last-child) {
+    margin-bottom: @goldenRatio * 2em;
+  }
+
+  .Person:nth-child(even) {
+    .Name {
+      text-align: right;
+    }
+
+    .Photo {
+      float: right;
+      transform: rotate(5deg);
+    }
+
+    .Info {
+      margin-left: inherit;
+      margin-right: @photoSpacing;
+    }
+  }
+
+}

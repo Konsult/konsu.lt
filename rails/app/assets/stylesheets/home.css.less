@@ -1,6 +1,7 @@
 @goldenRatio: 1.618;
 @primarySize: 18;
 @secondarySize: 15;
+@maxWidth: 800px;
 
 .biggerFont (@baseSize, @ratio: 2) {
   font-size: @baseSize * @ratio * @goldenRatio;
@@ -15,6 +16,12 @@
 .StampedText {
   color: darken(@background-color, 25%);
   text-shadow: 0 1px 0 white; 
+}
+
+.WhiteFramedPhoto {
+    box-sizing: border-box;
+    border: 5px solid white;
+    box-shadow: inset 0 1px 3px fade(black, 15%), 0 3px 5px fade(black, 50%);
 }
 
 @z-nav: 2;
@@ -43,7 +50,12 @@ body {
 }
 
 p {
-  line-height: @goldenRatio * 1em;
+  @lineHeight: @goldenRatio * 1em;
+  line-height: @lineHeight;
+  max-width: @maxWidth;
+
+  margin-top: @lineHeight;
+  margin-bottom: @lineHeight;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -99,4 +111,7 @@ h3 {
   margin: 0 auto;
   box-sizing: border-box;
   height: 100%;
+}
+
+.homepage {
 }

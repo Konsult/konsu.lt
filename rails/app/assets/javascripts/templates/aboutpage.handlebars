@@ -1,7 +1,3 @@
-<h2>Matt Delaney</h2>
-<img src="http://baconmockup.com/200/200" width="200" height="200">
-<p>As a former engineer on Apple’s WebKit core team, Matt loves building insanely great things and believes in open source. A high-performance graphics junky at heart and robotics tinkerer, Matt brings technical experience from all areas.</p>
-
-<h2>Jing Jin</h2>
-<img src="http://baconmockup.com/200/201" width="200" height="200">
-<p>Jing is one of those few first-class designers who is also one fantastic engineer. Jing brings years of UI/UX design experience from Apple’s Safari team and a borderline irrational love for pixel-perfection. With an unabashed addiction for intuitively designed and flawlessly executed user interfaces, she’ll turn your magical unicorn into a triple Michelin star bacon cupcake delight.</p>
+{{#each App.people}}
+  {{view App.PersonView modelBinding="this"}}
+{{/each}}
