@@ -87,6 +87,7 @@ App.reopen({
         Platform.iPad,
         Platform.Firefox,
       ],
+      url: "http://games.konsu.lt",
       thumbnail: "/images/sample/invaders.png",
     }),
     App.SampleWork.create({
