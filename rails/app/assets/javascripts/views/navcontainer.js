@@ -55,10 +55,14 @@ App.NavContainer = Em.View.extend({
     this.get("indicator").css(M.prefixed("transform"), "translateX(" + Math.round(buttonCenter - pageCenter) + "px)");
   },
 
-  _selectedButton: function () {
-    var button = this.$().find(".NavButton")[this.get("selectedIndex")];
+  buttonAtIndex: function (index) {
+    var button = this.$().find(".NavButton")[index];
     if (button)
       return button.view();
     return null;
+  },
+
+  _selectedButton: function () {
+    return this.buttonAtIndex(this.get("selectedIndex"));
   }
 });

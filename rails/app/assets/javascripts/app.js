@@ -35,6 +35,11 @@ App.reopen({
       logo: "/images/logo.png",
       templateName: "homepage",
       index: 0,
+      didInsertElement: function () {
+        $("#contactButton").click(function () {
+          App.get("navContainer").buttonAtIndex(App._indexOfShortName("Contact")).$().click();
+        });
+      }
     }),
     App.PageView.create({
       name: "Who We Are",
@@ -53,6 +58,15 @@ App.reopen({
       shortName: "Contact",
       templateName: "contactpage",
       index: 3,
+      didInsertElement: function () {
+        var name = "us";
+        var email = $(".emailPlaceholder");
+        var addr = name + "@konsu.lt";
+        var link = $("<a>");
+        link.attr("href", "mailto:" + addr);
+        link.append(addr);
+        email.append(link);
+      }
     }),
     App.PageView.create({
       classNames: ["SamplePage"],
@@ -155,19 +169,7 @@ App.reopen({
 
     // Find the corresponding page index.
     var name = location.pathname.substring(indexOfSlash + 1);
-    var index = -1;
-    var pages = this.get("pages");
-    if (name.length === 0)
-      index = 0;
-    else {
-      var nameRegex = new RegExp("^" + name + "$", "i");
-      for (var i = 0; i < pages.length; i++) {
-        if (nameRegex.test(pages[i].get("shortName"))) {
-          index = i;
-          break;
-        }
-      }
-    }
+    var index = App._indexOfShortName(name);
 
     // Go to page.
     if (index === -1) {
@@ -183,6 +185,20 @@ App.reopen({
 
     this.get("navContainer").set("selectedIndex", index);
   },
+
+  _indexOfShortName: function (shortName) {
+    var pages = this.get("pages");
+    if (shortName.length === 0)
+      return 0;
+
+    var nameRegex = new RegExp("^" + shortName + "$", "i");
+    for (var i = 0; i < pages.length; i++) {
+      if (nameRegex.test(pages[i].get("shortName")))
+        return i;
+    }
+
+    return -1;
+  }
 });
 
 // App.initialize();
