@@ -50,3 +50,32 @@
   }
 
 }
+
+@media all and (max-width: 600px) {
+  .aboutpage {
+    .Person {
+      text-align: right;
+      .Photo {
+        display: inline-block;
+        float: none;
+        margin-bottom: -4em;
+      }
+      .Info {
+        margin-left: inherit;
+        text-align: justify;
+      }
+    }
+
+    .Person:nth-child(even) {
+      text-align: left;
+      .Photo {
+        display: inline-block;
+        float: none;
+      }
+      .Info {
+        text-align: justify;
+        margin-right: inherit;
+      }
+    }
+  }
+}
