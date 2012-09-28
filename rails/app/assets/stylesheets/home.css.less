@@ -3,6 +3,18 @@
 @secondarySize: 15;
 @maxWidth: 800px;
 
+#kDude {
+  margin: 0px;
+  padding: 0px;
+
+  position: absolute;
+  left: 120%;
+  top: 128px;
+
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+}
+
 .biggerFont (@baseSize, @ratio: 2) {
   font-size: @baseSize * @ratio * @goldenRatio;
 }
