@@ -3,6 +3,66 @@
 @secondarySize: 15;
 @maxWidth: 800px;
 
+
+#intro {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 120%;
+  overflow: hidden;
+}
+#bbar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 0%;
+
+  -webkit-transition-property: height;
+  -webkit-transition-duration: 1s;
+
+  background-color: black;
+}
+
+#sbar {
+  position: absolute;
+  bottom: 0px;
+  height: 0%;
+
+  -webkit-transition-property: height;
+  -webkit-transition-duration: 1s;
+
+  background-color: black;
+}
+
+#arm {
+  position: absolute;
+  top: 0px;
+  left: 2000px;
+  height: 100%;
+  width: 100%;
+
+  -webkit-transition-property: left;
+  -webkit-transition-duration: 1s;
+}
+#armTop {
+  position: absolute;
+  top: 50%;
+
+  transform: rotate(-45deg);
+  transform-origin: 0px 0px;
+
+  background-color: black;
+}
+#armBottom {
+  position: absolute;
+  bottom: 50%;
+
+  transform: rotate(45deg);
+  transform-origin: 0% 100%;
+
+  background-color: black;
+}
+
 #kDude {
   margin: 0px;
   padding: 0px;
