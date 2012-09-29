@@ -1,0 +1,29 @@
+@import "application.less";
+
+@sectionRotation: 10deg;
+
+#sections {
+  position: relative;
+  padding-top: @navBarHeight;
+  min-height: 100%;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+
+  z-index: @z-section;
+}
+
+.Section {
+  position: absolute;
+  width: 100%;
+
+  animation: 0.25s ease-out both;
+
+  transform-origin: 0 -2000px;
+  // Prevent flashing after animation.
+  transform: translateZ(0);
+
+  box-sizing: border-box;
+  padding: 1em;
+}

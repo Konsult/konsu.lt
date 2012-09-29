@@ -1,0 +1,142 @@
+@import "application.less";
+
+#nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: @navBarHeight;
+  overflow: hidden;
+
+  z-index: @z-nav;
+
+  background-color: white;
+}
+
+@buttonTransitionDuration: 0.5s;
+
+.NavButton {
+  position: absolute;
+  top: -100px;
+  padding-top: 100px;
+  margin-right: 5px;
+
+  font-weight: bold;
+  text-align: center;
+
+  transition-property: background-color, transform;
+  transition-duration: 0s, 0.15s;
+  transition-timing-function: linear, ease-out;
+
+  // Gah, compositing.
+  transform: translateZ(0);
+
+  // Override .Button
+  border-radius: 0;
+
+  .ButtonHighlight {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(white, fade(white, 0%));
+    z-index: 3;
+
+    opacity: 0.5;
+  }
+
+  .ButtonInterior {
+    font-size: @secondarySize;
+    padding: 0.5em;
+    color: transparent;
+    font-family: "Aller Display";
+    font-weight: normal;
+  }
+
+  .UpperButtonInterior, .Tail {
+    transition: transform @buttonTransitionDuration ease-out;
+  }
+
+  .UpperButtonInterior {
+    .ButtonInterior;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+  }
+
+  .Tail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    box-shadow: 0 3px 2px darken(@background-color, 15%);
+
+    z-index: 1;
+  }
+
+  .Tail:nth-child(odd) {
+    transform: skewY(10deg);
+  }
+  .Tail:nth-child(even) {
+    transform:skewY(-10deg);
+  }
+}
+
+.NavButton.Active, .NavButton.Hover {
+  transform: translateY(20px);
+}
+
+.ButtonWithColor (@color) {
+  background-color: @color;
+  transition-delay: @buttonTransitionDuration, 0s;
+  color: white;
+  .ButtonInterior {
+    color: @color;
+  }
+  .UpperButtonInterior, .Tail {
+    background-color: @color;
+  }
+}
+.LabelWithColor (@color) {
+  background-color: transparent;
+  transition-delay: 0s;
+  color: @color;
+  cursor: inherit !important;
+  transform: none !important;
+
+  .UpperButtonInterior {
+    transform: translateY(-200px);
+  }
+  .Tail:nth-child(odd) {
+    transform: translateY(-200px) skewY(10deg);
+  }
+  .Tail:nth-child(even) {
+    transform: translateY(-200px) skewY(-10deg);
+  }
+}
+
+.NavButton.Who {
+  .ButtonWithColor(@appOrange);
+}
+#app.Who .NavButton.Who {
+  .LabelWithColor(@appOrange);
+}
+
+.NavButton.What {
+  .ButtonWithColor(@appBlue);
+}
+#app.What .NavButton.What {
+  .LabelWithColor(@appBlue);
+}
+
+.NavButton.Demos {
+  .ButtonWithColor(@appPink);
+}
+#app.Demos .NavButton.Demos {
+  .LabelWithColor(@appPink);
+}

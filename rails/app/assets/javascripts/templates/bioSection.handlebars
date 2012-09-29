@@ -1,0 +1,11 @@
+<div class="RaisedPaperContainer">
+  <div class="RaisedPaper CompanyBlurbContainer">
+    <p>{{model.companyBlurb}}</p>
+    <div class="emailButton">
+      {{view App.ButtonView labelBinding="model.contactButtonLabel"}}
+    </div>
+  </div>
+</div>
+{{#each model.people}}
+  {{view App.PersonView modelBinding="this"}}
+{{/each}}

@@ -1,7 +1,6 @@
 App.ButtonView = Em.View.extend({
   classNames: ["Button"],
   templateName: "button",
-  colors: ["Blue", "White", "None"],
   hover: false,
   active: false,
 
@@ -41,7 +40,7 @@ App.ButtonView = Em.View.extend({
   },
 
   didInsertElement: function () {
-    this.$().addClass(this.get("color"));
+    this.updateButtonStyle();
   },
 
   updateButtonStyle: function () {
@@ -50,7 +49,12 @@ App.ButtonView = Em.View.extend({
       return;
 
     el.removeClass(App.ButtonView.colors.join(" "));
-    el.addClass(this.get("color"));
+    var newColor = this.get("color");
+    if (App.ButtonView.colors.contains(newColor))
+      el.addClass(newColor).css("backgroundColor", "");
+    else
+      el.addClass("None").css("backgroundColor", newColor);
 
   }.observes("color"),
 });
+App.ButtonView.colors = ["Blue", "White", "None"];

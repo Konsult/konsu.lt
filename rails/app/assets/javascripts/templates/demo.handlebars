@@ -1,0 +1,11 @@
+<div class="Thumbnail"></div>
+<h3 class="Name">{{name}}<div class="Version">{{version}}</div></h3>
+<div class="Platforms">{{platforms}}</div>
+<p class="Description">{{description}}</p>
+{{#if isSupported}}
+  {{#if url}}
+    <a target="_blank" {{bindAttr href="url"}}>
+      {{view App.ButtonView label="Open Demo"}}
+    </a>
+  {{/if}}
+{{/if}}

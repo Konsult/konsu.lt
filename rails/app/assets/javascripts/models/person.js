@@ -1,5 +1,5 @@
-App.Person = Em.Object.extend({
-  name: "",
-  photoSrc: "",
-  description: "",
+App.Person = Em.Model.extend({
+  name: "", // str
+  photo: null, // url
+  description: "", // str
 });

@@ -1,38 +1,18 @@
-@import "home.css.less";
+@import "application.less";
 
-.SamplePage {
+.Demos {
   text-align: center;
 }
 
-@keyframes swing {
-  16.5% {
-    transform: rotate(5deg);
-  }
-  66% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0);
-  }
-}
-
-#blogLink {
-  padding-bottom: @goldenRatio * 1em;
-  position: relative;
-  margin-left: 0;
-  margin-right: 0;
-  max-width: inherit;
-}
-
-.SampleWork {
+.DemoView {
   @minWidth: @goldenRatio * @primarySize * 10px;
-  @padding: @goldenRatio * @primarySize * 1px;
+  @padding: 1em;
 
   position: relative;
   display: inline-block;
   vertical-align: top;
 
-  text-align: left;
+  text-align: center;
 
   box-sizing: border-box;
   width: 33.3%;
@@ -41,10 +21,14 @@
 
   .Thumbnail {
     .WhiteFramedPhoto;
+    @widthRatio: 0.8;
     position: relative;
-    width: 100%;
+    display: block;
+    width: @widthRatio * 100%;
     // Make a square image at its smallest.
-    height: @minWidth - 2 * @padding;
+    height: @widthRatio * (@minWidth - 2 * @padding);
+    margin-left: auto;
+    margin-right: auto;
 
     background-size: cover;
     background-position: center;
@@ -56,7 +40,7 @@
     animation: swing 0.5s ease-in;
   }
 
-  .Title {
+    .Name {
     margin-bottom: 0;
 
     .Version {
@@ -77,10 +61,15 @@
 
   .Platforms {
     .StampedText;
+
     font-family: "Aller";
     font-weight: bold;
     font-size: @secondarySize * 1px;
     line-height: @goldenRatio * 1em;
+ }
+
+ .Description {
+  text-align: left;
  }
 
  .Button {

@@ -1,7 +1,23 @@
+/*= require_self
+ *= require_tree ./lib
+ *= require_tree . */
+
+@fontspath: "/static/fonts";
+
 @goldenRatio: 1.618;
 @primarySize: 18;
 @secondarySize: 15;
 @maxWidth: 800px;
+@background-color: white;
+@navBarHeight: 4em;
+
+@appOrange : rgb(246, 143, 0);
+@appPink: rgb(239, 48, 89);
+@appBlue: rgb(0, 142, 255);
+@appGreen: rgb(113, 187, 112);
+
+@z-nav: 2;
+@z-section: 1;
 
 .biggerFont (@baseSize, @ratio: 2) {
   font-size: @baseSize * @ratio * @goldenRatio;
@@ -9,9 +25,6 @@
 .smallerFont (@baseSize, @ratio: 2) {
   font-size: @baseSize / @ratio * @goldenRatio;
 }
-
-@background-color: #EEE;
-@navTransitionDuration: 0.25s;
 
 .StampedText {
   color: darken(@background-color, 25%);
@@ -22,31 +35,40 @@
     box-sizing: border-box;
     border: 5px solid white;
     box-shadow: inset 0 1px 3px fade(black, 15%), 0 3px 5px fade(black, 50%);
+    background-color: white;
 }
 
-@z-nav: 2;
-@z-content: 1;
-
-.Background {
-  background-color: @background-color;
+.Hide {
+  display: none;
 }
 
-html {
-  height: 100%;
+.RaisedPaperContainer {
+    padding: 2px 0 5px 0;
+    background-image: radial-gradient(contain, rgba(0, 0, 0, 0.5), transparent);
+}
+.RaisedPaper {
+    background-color: white;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    border-color: rgba(200, 200, 200, 0.2);
 }
 
-body {
-  .Background;
+html, body, #app {
   position: relative;
+  height: 100%;
+  width: 100%;
+}
 
-  font-family: "Aller Light";
-  font-size: @primarySize * 1px;
-  line-height: 1em;
+#app {
+  opacity: 0;
+  transition: opacity 1s ease-out;
 
-  height: inherit;
-  min-width: 480px;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
 
-  overflow-y: scroll;
+  color: darken(@background-color, 75%);
+  -webkit-tap-highlight-color: transparent;
 }
 
 p {
@@ -89,29 +111,4 @@ h3 {
 .Button {
   font-size: @primarySize * 1px;
   line-height: 1em;
-}
-
-.NavContainer {
-  .Background;
-  z-index: @z-nav;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  // Prevent flashing on Safari
-  transform: translateZ(0);
-}
-
-#pageContainer {
-  z-index: @z-content;
-  position: relative;
-
-  margin: 0 auto;
-  box-sizing: border-box;
-  height: 100%;
-}
-
-.homepage {
 }

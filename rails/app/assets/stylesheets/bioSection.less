@@ -1,0 +1,44 @@
+@import "application.less";
+
+@personPhotoSide: 150px;
+@photoSpacing: @personPhotoSide + @primarySize;
+
+.CompanyBlurbContainer {
+  padding: 0 1em 1em 1em;
+  text-align: center;
+}
+
+.Person {
+  margin-top: @goldenRatio * 2em;
+
+  .Photo {
+    .WhiteFramedPhoto;
+
+    background-position: center;
+    width: @personPhotoSide;
+    height: @personPhotoSide;
+
+    float: left;
+
+    margin: 1em 1em 1em 0;
+
+    transform: rotate(-5deg);
+    transform-origin: bottom left;
+  }
+
+  .NameContainer {
+    position: relative;
+    display: inline-block;
+    min-height: @personPhotoSide;
+  }
+
+  .Name {
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 0;
+  }
+
+  .Description {
+    clear: both;
+  }
+}
