@@ -34,10 +34,9 @@ App.TransitionController = Em.Object.extend({
 
     // Fade in the body now that everything is placed.
     var transitionEnd = M.prefixed("transitionEnd");
-    var root = $(App.get("rootElement"));
-    root.css("opacity", "1");
+    $("#appContainer").css("opacity", "1");
     if (transitionEnd)
-      root.one(transitionEnd, showButtons);
+      $("#appContainer").one(transitionEnd, showButtons);
     else
       showButtons();
   },
