@@ -53,5 +53,8 @@ App.NavController = Em.Object.extend({
         return section;
       }
     }
+
+    // Non-existent URL, redirect to home.
+    location.replace(location.getOrigin());
   },
 });
