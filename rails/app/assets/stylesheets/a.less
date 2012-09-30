@@ -1,0 +1,36 @@
+@import "lib/button.less";
+@import "application.less";
+p {
+  @highlightColor: lighten(@whiteButtonColor, 3%);
+  a, a:hover, a:active, a:visited {
+    .Button.White;
+    display: inline-block;
+
+    color: lighten(black, 25%);
+    font-family: "Aller";
+    text-shadow: 0 1px 0 white;
+    text-decoration: inherit;
+    line-height: 1em;
+
+    padding: @buttonBorderRadius;
+    margin-left: -@buttonBorderRadius/3;
+    margin-right: -@buttonBorderRadius/3;
+    border-radius: @buttonBorderRadius;
+
+    background-image: linear-gradient(@highlightColor, @whiteButtonColor);
+    border: 1px solid lighten(black, 87%);
+
+    transition: box-shadow 0.25s ease-in-out
+  }
+
+  a:hover {
+    background-color: lighten(@whiteButtonColor, 3%);
+    background-image: linear-gradient(lighten(@highlightColor, 2%), @highlightColor);
+  
+    box-shadow: 0 0 5px white;
+  }
+  a:active {
+    background-color: @pressedWhiteButtonColor;
+    background-image: linear-gradient(@pressedWhiteButtonColor, @whiteButtonColor);
+  }
+}

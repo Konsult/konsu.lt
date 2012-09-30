@@ -1,5 +1,9 @@
 {{#each model.demos}}
   {{view App.DemoView modelBinding="this" nameBinding="model.name" versionBinding="model.version" descriptionBinding="model.description" platformsBinding="model.platforms" thumbanilBinding="model.thumbnail" urlBinding="model.url" isSupportedBinding="model.isSupported"}}
 {{/each}}
-<p id="blogLink"><a href="http://blog.konsu.lt">Follow our blog</a> to get updates on future demos!
-</p>
+<div class="RaisedPaperContainer">
+  <div class="RaisedPaper">
+    <p id="blogLink"><a href="http://blog.konsu.lt">Follow our blog</a> to get updates on future demos!
+    </p>
+  </div>
+</div>
