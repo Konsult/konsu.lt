@@ -3,6 +3,10 @@
 @personPhotoSide: 150px;
 @photoSpacing: @personPhotoSide + @primarySize;
 
+.bioSection {
+  text-align: center;
+}
+
 .CompanyBlurbContainer {
   padding: 0 1em 1em 1em;
   text-align: center;
@@ -10,6 +14,12 @@
 
 .Person {
   margin-top: @goldenRatio * 2em;
+  display: inline-block;
+  max-width: 300px;
+  margin-left: 1em;
+  margin-right: 1em;
+  text-align: left;
+  vertical-align: top;
 
   .Photo {
     .WhiteFramedPhoto;
@@ -40,5 +50,13 @@
 
   .Description {
     clear: both;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .Person {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 400px;
   }
 }
