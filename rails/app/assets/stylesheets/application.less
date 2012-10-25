@@ -85,21 +85,44 @@
   transition: opacity 1s ease-out;
 
   overflow: auto;
-
-  background-image: radial-gradient(80% 0%, 200% 100%, fade(black, 2%), fade(black, 10%));
 }
 
 #app {
   position: relative;
   width: 100%;
   height: 100%;
-  max-width: 1024px;
+  max-width: @maxWidth;
   margin-left: auto;
   margin-right: auto;
 
   color: darken(@background-color, 75%);
   -webkit-tap-highlight-color: transparent;
 }
+
+#appBackground {
+  @totalWidth: @maxWidth + 50px;
+
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: @totalWidth;
+  margin-left: -@totalWidth / 2;
+  height: 100%;  
+
+  background-color: @background-color;
+  background-image: radial-gradient(80% 0%, 200% 100%, fade(black, 2%), fade(black, 10%));
+}
+
+// Put a background behind content when screen is wide.
+@media screen and (min-width: @maxWidth) {
+  #appBackground {
+    box-shadow: 0 0 1em 1px fade(black, 25%);
+  }
+  #appContainer {
+    background-image: url("/assets/paper_2.jpg");
+  }
+}
+
 
 p {
   @lineHeight: @goldenRatio * 1em;
