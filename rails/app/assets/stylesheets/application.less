@@ -16,6 +16,7 @@
 @appBlue: rgb(0, 142, 255);
 @appGreen: rgb(113, 187, 112);
 
+@z-logo: 3;
 @z-nav: 2;
 @z-section: 1;
 
@@ -121,6 +122,20 @@
   #appContainer {
     background-image: url("/assets/paper_2.jpg");
   }
+}
+
+#konsult {
+  width: 162px;
+  height: 72px;
+  position: absolute;
+  top: 10px;
+  left: 0em;
+
+  background-image: url("/assets/konsult.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  z-index: @z-logo;
 }
 
 

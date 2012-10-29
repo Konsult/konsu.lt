@@ -41,6 +41,7 @@ App.reopen({
     var root = App.get("rootElement");
     sectionContainer.appendTo(root);
     buttonContainer.appendTo(root);
+    $("<div id='konsult'>").appendTo(root);
 
     this.get("navController").initialize();
 
