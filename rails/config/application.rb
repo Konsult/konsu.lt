@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require 'stylus'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -58,5 +59,8 @@ module RailsSite
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Import plugins directly from Node.js, like nib.
+    Stylus.use :nib
   end
 end
