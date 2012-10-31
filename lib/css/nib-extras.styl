@@ -1,0 +1,17 @@
+join(args, separator)
+  str = ''
+  for arg, i in args
+    str += ', ' if i
+    str += arg
+  unquote(str)
+
+radial-gradient()
+  prop = current-property[0]
+  val = current-property[1]
+
+  str = join(arguments, ',')
+  add-property(prop, replace(val, '__CALL__', '-webkit-radial-gradient(%s)' % str))
+  add-property(prop, replace(val, '__CALL__', '-moz-radial-gradient(%s)' % str))
+  add-property(prop, replace(val, '__CALL__', '-ms-radial-gradient(%s)' % str))
+  add-property(prop, replace(val, '__CALL__', '-o-radial-gradient(%s)' % str))
+  'radial-gradient(%s)' % str
