@@ -29,7 +29,7 @@ var demoPage = (function () {
     dial.description = "This password entry UI concept is specifically designed for touch devices.";
     dial.platforms = ["iPhone", "iPad", "Safari", "Chrome"];
     dial.thumbnail = "/images/sample/dial.png";
-    dial.link = "http://konsu.lt/demos/SafeBoxDial/";
+    dial.url = "http://konsu.lt/demos/SafeBoxDial/";
     demoPage.demos[1] = dial;
   }
 

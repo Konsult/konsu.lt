@@ -29,7 +29,7 @@ function DemoView (privates, model) {
 
     // Description + link
     var descriptionHTML = "<p class='Description'>" + model.description + "</div>";
-    var linkHTML = model.url ? "<a class='Link' href='" + model.url + "'>Open</a>" : null;
+    var linkHTML = model.url ? "<a class='Link' href='" + model.url + "'>Open</a>" : "";
     var container = "<div class='Details'>" + descriptionHTML + linkHTML + "</div>";
     contents.push(container);
 
