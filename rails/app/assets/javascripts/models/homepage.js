@@ -6,6 +6,8 @@ var homePage = (function () {
 
   // Overrides
   homePage.viewClass = "HomePageView";
+  homePage.name = "Konsult";
+  homePage.path = "";
 
   homePage.toString = function () {
     return "homePage";

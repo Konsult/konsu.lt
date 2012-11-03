@@ -13,6 +13,6 @@ function Page (privates) {
 
   // Public
   page.name = ""; // string
-  page.path = ""; // url relative to root excluding /
+  page.paths = null; // url relative to root excluding /
   return page;
 };

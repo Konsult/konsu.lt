@@ -1,5 +1,6 @@
 //= require models/homepage
 //= require views/pageView
+//= require_self
 
 function HomePageView (privates, model) {
   privates = privates || {};
