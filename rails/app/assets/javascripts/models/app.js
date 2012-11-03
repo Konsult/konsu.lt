@@ -2,7 +2,7 @@
 //= require_self
 var app = (function () {
   var that = Object.new(Model());
-  that.pages = [homePage]; // array<Page>
+  that.pages = [homePage, aboutPage, demoPage]; // array<Page>
   that.selectedPage = 0; // index in app.pages
 
   // Overrides
