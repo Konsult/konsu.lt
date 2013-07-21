@@ -7,23 +7,24 @@ Header =
     { name: 'Face Invaders Game', image: 'face_invaders.jpg' }
   ]
 
-  curr: -1
+  curr: 0
   curr$: null
 
   top$: null
   bottom$: null
   caption$: null
 
-  duration: 1000
+  duration: 2000
+  captionDuration: 1000
 
   showImage: (image$, callback) ->
     if image$ is Header.bottom$
       Header.bottom$.css display: 'block'
-      Header.top$.transition(opacity: 0, callback)
+      Header.top$.transition(opacity: 0, Header.duration, callback)
     else
       Header.top$
         .css(display: 'block', opacity: 0)
-        .transition(opacity: 1, callback)
+        .transition(opacity: 1, Header.duration, callback)
 
   loadImage: (image$, index) ->
     src = '/images/header/' + Header.headers[index].image
@@ -34,17 +35,16 @@ Header =
 
   transitionHeader: (callback) ->
     console.log 'transitionHeader from ' + Header.curr
-    oldIndex = Header.curr
-    newIndex = ++oldIndex % Header.headers.length
+    nextIndex = (Header.curr + 1) % (Header.headers.length - 1)
     old$ = if Header.curr$? then Header.curr$ else Header.bottom$
     new$ = if old$ is Header.top$ then Header.bottom$ else Header.top$
 
-    Header.caption$.transition opacity:0, Header.duration, ->
-      Header.caption$.html Header.headers[newIndex]
+    Header.caption$.transition opacity:0, Header.captionDuration, ->
+      Header.caption$.html Header.headers[Header.curr].name
       Header.showImage new$, ->
-        Header.caption$.transition opacity:1, Header.duration, ->
-          Header.loadImage old$, newIndex
-          Header.curr = newIndex
+        Header.caption$.transition opacity:0.5, Header.captionDuration, ->
+          Header.loadImage old$, nextIndex
+          Header.curr = nextIndex
           Header.curr$ = new$
           callback?()
 
@@ -52,14 +52,12 @@ Meteor.startup ->
   Header.top$ = $ '#top .header_image.top'
   Header.bottom$ = $ '#top .header_image.bottom'
   Header.caption$ = $ '#top #header_image_caption'
-  $.fx.speeds._default = 1000
 
   if !$.support.transition
     $.fn.transition = $.fn.animate
 
   # Pre-load bg-image before starting animations
-  next = Header.curr + 1
-  imgSrc = Header.loadImage Header.top$, next
+  imgSrc = Header.loadImage Header.top$, Header.curr
   console.log 'preloading ' + imgSrc
   $('<img/>')
     .attr(src: imgSrc)
