@@ -8,3 +8,4 @@ bootstrap
 less
 jquery
 stylus
+coffeescript
