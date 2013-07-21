@@ -1,0 +1,80 @@
+@import url('http://fonts.googleapis.com/css?family=Cabin:400,700');
+@import url('/fonts/cabinsketch-bold/stylesheet.css');
+
+goldenRatio = 1.618
+
+bodyFontSize = 16px
+darkBodyFontSize = 19px
+tinyFontsize = 0.73 * bodyFontSize
+smallHeaderSize = 1.18 * bodyFontSize
+mediumHeaderSize = 1.618 * bodyFontSize
+largeHeaderSize = 3.09 * bodyFontSize
+titleSize = 5 * bodyFontSize
+
+lightFontColor = #DDD
+
+.brandFont
+  font-family 'Cabin', arial, sans-serif
+  font-weight 400
+
+.headingFont
+  font-family 'Cabin Sketch', 'Cabin', arial, sans-serif
+  font-weight bold
+
+body {
+  font-size bodyFontSize
+  font arial, sans-serif
+  line-height goldenRatio*1em
+  padding 0
+  margin 0
+}
+
+h1, h3, h4, h5, h6
+  @extend .brandFont
+h1
+  font-weight 700
+  font-size titleSize
+h2
+  @extend .headingFont
+  font-size largeHeaderSize
+  color skyblue
+h3, h4, h5, h6
+  @extend .brandFont
+
+h3
+  font-weight 700
+  font-size mediumHeaderSize
+h4
+  font-weight 400
+  font-size mediumHeaderSize
+h5
+  font-weight 700
+  font-size smallHeaderSize
+h6
+  font-weight 700
+  font-size bodyFontSize
+
+p
+  margin-top bodyFontSize
+  margin-bottom bodyFontSize
+
+.konsult
+  @extend .brandFont
+  font-weight 700
+  font-size titleSize
+  line-height 1em
+
+.dark
+  background-color black
+  background-image url('/images/blackboard.jpg')
+
+  color lightFontColor
+  font-size darkBodyFontSize
+  line-height goldenRatio*1.1em
+
+.container
+  width 800px
+  max-width 100%
+  box-sizing border-box
+  padding-top largeHeaderSize
+  padding-bottom largeHeaderSize

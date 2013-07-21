@@ -1,0 +1,34 @@
+@import 'util.styl'
+
+largeHeaderSize = 2.618*bodyFontSize
+titleSize = 4.236*bodyFontSize
+
+/* Large desktop */
+@media (min-width: 1200px)
+  .container
+    width 800px
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px)
+  .container
+    width 768
+    padding bodyFontSize*2
+    padding bodyFontSize*2
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px)
+  .container
+    width auto
+    padding bodyFontSize*2
+    padding bodyFontSize*2
+  .dark
+    line-height goldenRatio*1em !important
+  h1, .konsult
+    font-size largeHeaderSize !important
+  h2
+    font-size largeHeaderSize !important
+  h3
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+}
