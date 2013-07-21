@@ -22,6 +22,12 @@ darkBgColor = rgb(15, 26, 28)
   font-family 'Cabin Sketch', 'Cabin', arial, sans-serif
   font-weight bold
 
+.lightFont
+  color lightFontColor
+  font-size darkBodyFontSize
+  line-height goldenRatio*1.1em
+  font-weight 200
+
 body {
   font-size bodyFontSize
   font arial, sans-serif
@@ -66,12 +72,13 @@ p
   line-height 1em
 
 .dark
-  background-color black
+  @extend .lightFont
+  background-color darkBgColor
   background-image url('/images/blackboard.jpg')
+  border-top 1px solid black
 
-  color lightFontColor
-  font-size darkBodyFontSize
-  line-height goldenRatio*1.1em
+.dark + div:not(.dark)
+  border-top 1px solid rgba(white, 0.75)
 
 .container
   width 800px
@@ -79,3 +86,8 @@ p
   box-sizing border-box
   padding-top largeHeaderSize
   padding-bottom largeHeaderSize
+
+.button
+  @extend .lightFont
+  color white
+  font-size smallHeaderSize

@@ -1,10 +1,10 @@
 Header =
   headers: [
-    { name: 'To-Do App Designs', image: 'todo.jpg' }
+    { name: 'To-Do List', image: 'todo.jpg' }
     { name: 'Safebox Dial ', image: 'safe_dial.jpg' }
-    { name: 'BillSplitter Wireframes', image: 'bill_splitter.jpg' }
+    { name: 'BillSplitter', image: 'bill_splitter.jpg' }
     { name: 'Typing Game', image: 'jsconf.jpg' }
-    { name: 'Face Invaders Game', image: 'face_invaders.jpg' }
+    { name: 'Face Invaders', image: 'face_invaders.jpg' }
   ]
 
   curr: 0
@@ -48,6 +48,7 @@ Header =
           Header.curr$ = new$
           callback?()
 
+
 Meteor.startup ->
   Header.top$ = $ '#top .header_image.top'
   Header.bottom$ = $ '#top .header_image.bottom'
@@ -66,5 +67,16 @@ Meteor.startup ->
       console.log 'loaded ' + imgSrc
       Header.transitionHeader ->
         setInterval Header.transitionHeader, 10000
+
+  # Set up button events
+  activateButton = (event) ->
+    $(event.currentTarget).addClass('active')
+  deactivateButton = (event) ->
+    $(event.currentTarget).removeClass('active')
+  $('.button').on(
+    touchstart: activateButton,
+    touchend: deactivateButton,
+    # touchcancel: deactivateButton
+  )
 
 
