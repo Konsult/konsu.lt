@@ -97,27 +97,36 @@ z-who = 1
     h2
       color indianred
 
-  .section + .section .container
-    padding-top 0
-    &> *:first-child
-      margin-top 0
-      padding-top 0
 
   .contact
+    border-top 1px solid darken(white, 15%)
+    border-bottom 1px solid darken(white, 30%)
+    background-color rgba(white, 50%)
+    box-shadow 0 2px 5px rgba(black, 10%)
+
+    h2
+      color deepskyblue
+
     #contact_form
       input, textarea
         width 100%
       textarea
         resize none
+
+      .status
+        opacity 0
+        text-align center
+        -webkit-transform translateZ(0)
       .submit
         margin-top bodyFontSize
         text-align center
 
 .footer
   font-size tinyFontsize
-  color darkBgColor
+  color rgba(black, 30%)
   .container
     padding-bottom 0
+    text-align right
 
 .decor
   user-select none

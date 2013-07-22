@@ -81,7 +81,8 @@ input, textarea, .input, .textarea
   box-sizing border-box !important
   height auto !important
   margin-bottom bodyFontSize !important
-  background-color rgba(white, 0.75) !important
+  background-color rgba(white, 0.5) !important
+  border-radius 0 !important
 
   transition-property: border, box-shadow, background-color !important
   &:focus
@@ -102,8 +103,11 @@ input, .input
   background-image url('/images/blackboard.jpg')
   border-top 1px solid black
 
+div:not(.dark) + .dark
+  border-top 1px solid black
+
 .dark + div:not(.dark)
-  border-top 1px solid rgba(white, 0.75)
+  border-top 1px solid white
 
 .container
   width 680px

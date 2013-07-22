@@ -69,23 +69,25 @@
         </p>
       </div>
     </div>
+
     <div class="contact section">
       <div class="container">
         <h2>Let's Talk</h2>
         <form id="contact_form">
           <div class="row-fluid">
             <div class="span6">
-              <input type="text" placeholder="Name">
+              <input id="contact_name" type="text" placeholder="Name">
             </div>
             <div class="span6">
-              <input type="email" placeholder="Email">
+              <input id="contact_email" type="email" placeholder="Email">
             </div>
           </div>
           <div class="row-fluid">
-            <textarea rows="5" placeholder="Tell Us What You Need"></textarea>
+            <textarea id="contact_message" rows="5" placeholder="Tell Us What You Need"></textarea>
           </div>
+          <div class="status"></div>
           <div class="submit">
-            <button class="button">Send Message</button>
+            <button type="button" class="send button">Send Message</button>
           </div>
         </form>
       </div>
