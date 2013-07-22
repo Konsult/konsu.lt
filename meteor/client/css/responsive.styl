@@ -7,13 +7,13 @@ titleSize = 4.236*bodyFontSize
 @media (min-width: 1200px)
   .container
     width 800px
- 
+
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px)
   .container
-    width 768
-    padding bodyFontSize*2
-    padding bodyFontSize*2
+    width auto
+    padding 100px
+    padding 100px
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px)
@@ -28,6 +28,22 @@ titleSize = 4.236*bodyFontSize
   h2
     font-size largeHeaderSize !important
   h3
+
+  .what
+    background-image none
+
+  .decor
+    position relative
+    &#matt
+      bottom inherit
+      margin-left auto
+      margin-right auto
+      margin-top mediumHeaderSize * -1px
+      padding-bottom largeHeaderSize
+    &#jing
+      margin-left auto
+      margin-right auto
+      margin-bottom largeHeaderSize * -1px
 
 /* Landscape phones and down */
 @media (max-width: 480px) {

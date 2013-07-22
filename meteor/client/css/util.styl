@@ -1,5 +1,6 @@
 @import url('http://fonts.googleapis.com/css?family=Cabin:400,700');
 @import url('/fonts/cabinsketch-bold/stylesheet.css');
+@import 'nib'
 
 goldenRatio = 1.618
 
@@ -13,6 +14,11 @@ titleSize = 5 * bodyFontSize
 
 lightFontColor = #DDD
 darkBgColor = rgb(15, 26, 28)
+
+.bodyFont
+  font-size bodyFontSize
+  font-family arial, sans-serif
+  line-height goldenRatio*1em
 
 .brandFont
   font-family 'Cabin', arial, sans-serif
@@ -28,13 +34,10 @@ darkBgColor = rgb(15, 26, 28)
   line-height goldenRatio*1.1em
   font-weight 200
 
-body {
-  font-size bodyFontSize
-  font arial, sans-serif
-  line-height goldenRatio*1em
+body 
+  @extend .bodyFont
   padding 0
   margin 0
-}
 
 h1, h3, h4, h5, h6
   @extend .brandFont
@@ -65,6 +68,28 @@ p
   margin-top bodyFontSize
   margin-bottom bodyFontSize
 
+form
+  margin-top bodyFontSize
+  margin-bottom bodyFontSize
+
+input, textarea, .input, .textarea
+  font-size bodyFontSize !important
+  font-weight 200
+  font-family arial, sans-serif !important
+  line-height goldenRatio*1em !important
+  padding bodyFontSize !important
+  box-sizing border-box !important
+  height auto !important
+  margin-bottom bodyFontSize !important
+  background-color rgba(white, 0.75) !important
+
+  transition-property: border, box-shadow, background-color !important
+  &:focus
+    background-color white !important
+    
+input, .input
+  line-height 1em !important
+
 .konsult
   @extend .brandFont
   font-weight 700
@@ -81,7 +106,7 @@ p
   border-top 1px solid rgba(white, 0.75)
 
 .container
-  width 800px
+  width 680px
   max-width 100%
   box-sizing border-box
   padding-top largeHeaderSize
