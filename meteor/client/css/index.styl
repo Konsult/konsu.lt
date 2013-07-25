@@ -16,10 +16,10 @@ z-who = 1
 
   #header_image_caption
     position absolute
-    bottom tinyFontsize
-    right tinyFontsize
+    bottom tinyFontSize
+    right tinyFontSize
 
-    font-size tinyFontsize
+    font-size tinyFontSize
     text-align right
     line-height 1em
 
@@ -125,7 +125,7 @@ z-who = 1
         text-align center
 
 .footer
-  font-size tinyFontsize
+  font-size tinyFontSize
   color rgba(black, 30%)
   .container
     padding-bottom 0
@@ -145,14 +145,28 @@ z-who = 1
     image: '/images/decor/diagram.gif' 200px 206px
 
   &#matt, &#jing
-    height 200px
+    width 150px
+    .image
+      height 200px
+      width 100%
+      background-repeat no-repeat
+    .caption
+      @extend .brandFont
+      font-size tinyFontSize
+      line-height goldenRatio*1em
+      color #666
+      text-align center
+
   &#matt
-    bottom -250px
+    bottom -300px
     left 10px
-    width 131px
-    image: '/images/matt.png' 131px 200px
+    .image
+      image: '/images/matt.png' 131px 200px
+      background-position top left
+      padding-bottom 10px
   &#jing
     bottom 10%
     right 10px
-    width 98px
-    image: '/images/jing.png' 98px 200px
+    .image
+      image: '/images/jing.png' 98px 200px
+      background-position top center
