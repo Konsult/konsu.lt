@@ -1,6 +1,9 @@
 Header = window.Header
 
 Meteor.startup ->
+  # register GA pageview on startup
+  GAnalytics.pageview()
+
   Header.top$ = $ '#top .header_image.top'
   Header.bottom$ = $ '#top .header_image.bottom'
   Header.caption$ = $ '#top #header_image_caption'
