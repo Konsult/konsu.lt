@@ -1,172 +1,114 @@
-@import 'util.styl'
-@import 'nib'
+@import url('http://fonts.googleapis.com/css?family=Cabin:400,700');
+@import 'animations'
 
-z-what = 3
-z-top = 2
-z-who = 1
+golden = 1.618
+smallFontSize = 14px
+defaultFontSize = 18px
+headerFontSize = 60px
+pagePadding = headerFontSize
+textGray = #898989
 
-#top
-  position relative
-  top 0
-  background-color darkBgColor
-  background-image none
+iosBlue = #007fea
+darkBlue = #216ebc
 
-  height titleSize + bodyFontSize + smallHeaderSize*goldenRatio + bodyFontSize + largeHeaderSize*2
-  z-index = z-top
+minHeight = 400px
+headerHeight = 200px
+footerHeight = 100px
 
-  #header_image_caption
-    position absolute
-    bottom tinyFontSize
-    right tinyFontSize
+.bodyFont
+  font-family "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif
+  font-weight 300
+  font-size defaultFontSize
+  line-height 1.5em
 
-    font-size tinyFontSize
-    text-align right
-    line-height 1em
+*
+  box-sizing border-box
 
-    -webkit-transform translateZ(0) // Sigh, layer-backing issue
+a
+  text-decoration none
+  color iosBlue
+  &:hover
+    color darkBlue
+    text-decoration underline
+  &:visited
+    color iosBlue
 
-    z-index 2
+html, body
+  height 100%
 
-    // Disable captions for now
-    display none
+body
+  @extend .bodyFont
 
-  .bg
-    position absolute
-    width 100%
-    height 100%
+  min-height minHeight
+  max-width 600px
+  margin auto
+  padding 0 pagePadding/2
 
-    z-index 1
+  text-align center
+  color black
 
-    &> *
-      position absolute
-      width 100%
-      height 100%
-      -webkit-transform translateZ(0) // Sigh, layer-backing issue
+header
+  padding-top (pagePadding/2)
+h1
+  font-family 'Cabin', arial, sans-serif
+  font-weight 400
+  font-size headerFontSize
 
-    .overlay
-      background-image url('/images/outlets.gif')
-      opacity 0.6
-      z-index 4
+h2
+  @extend .bodyFont
+  padding-top 1em
+  color textGray
 
-    .gradient
-      background-image linear-gradient(top, transparent, rgba(darkBgColor, 75%))
-      z-index 3
-
-    .header_image
-      background-size cover
-      background-position center
-      &.top
-        z-index 2
-      &.bottom
-        z-index 1
-
-  .header
-    @extend .brandFont
-    position absolute
-    width 100%
-    height 100%
-
-    text-align center
-    font-size smallHeaderSize
-
-    box-sizing border-box
-    padding-top largeHeaderSize
-
-    -webkit-transform translateZ(0) // Sigh, layer-backing issue
-
-    z-index 3
-
-.section
-  position relative
-
-.what 
-  z-index z-what
-  // image: '/images/decor/wireframe.gif' 200px 216px
-  background-repeat no-repeat
-  background-position 0 80%
-
-  h2
-    color deepskyblue
-
-.who
-  z-index z-who
-  h2
-    color darkseagreen
-
-.bottom-sections
-  background-image linear-gradient(bottom right, rgb(199, 241, 192), rgb(255, 248, 231))
-
-  .pricing 
-    h2
-      color indianred
+footer
+  height footerHeight
+  font-size smallFontSize
+  color textGray
 
 
-  .contact
-    border-top 1px solid darken(white, 15%)
-    border-bottom 1px solid darken(white, 30%)
-    background-color rgba(white, 50%)
-    box-shadow 0 2px 5px rgba(black, 10%)
-
-    h2
-      color deepskyblue
-
-    #contact_form
-      input, textarea
-        width 100%
-      textarea
-        resize none
-
-      .status
-        opacity 0
-        text-align center
-        -webkit-transform translateZ(0)
-      .submit
-        margin-top bodyFontSize
-        text-align center
-
-.footer
-  font-size tinyFontSize
-  color rgba(black, 30%)
-  .container
-    padding-bottom 0
-    text-align right
-
-.decor
-  user-select none
+#centering_container
   position absolute
-  overflow hidden
-  background-repeat no-repeat
+  top headerHeight
+  left 0
+  bottom footerHeight
+  right 0
+  min-height minHeight - headerHeight - footerHeight
+  padding-bottom (headerHeight - footerHeight)/2
 
-  &#diagram
-    width 200px
-    bottom -300px
-    right 0
-    height 206px
-    image: '/images/decor/diagram.gif' 200px 206px
+  .centering_table
+    position absolute
+    top
+    left 0
+    width 100%
+    height 100%
+    display table
 
-  &#matt, &#jing
-    width 150px
-    .image
-      height 200px
-      width 100%
-      background-repeat no-repeat
-    .caption
-      @extend .brandFont
-      font-size tinyFontSize
-      line-height goldenRatio*1em
-      color #666
-      text-align center
+  .centered_content
+    display table-cell
+    vertical-align middle
+    text-align center
+    padding 0 (pagePadding/2)
 
-  &#matt
-    bottom -300px
-    left 10px
-    .image
-      image: '/images/matt.png' 131px 200px
-      background-position top left
-      padding-bottom 10px
-  &#jing
-    bottom 10%
-    right 10px
-    .image
-      image: '/images/jing.png' 98px 200px
-      background-position top center
+#wrapper
+  min-height 100%
+  height auto !important
+  height 100%
+  width 100%
+  margin-bottom (0px - footerHeight)
+
+#footer_spacer
+  height footerHeight
+
+// Animations
+
+header h2, footer
+  @extend .fadeIn1
+main
+  @extend .fadeIn2
+header h2, main
+  transform translateZ(0) // Animation fix for Safari
+
+// Responsive
+
+@media (max-width: 320px)
+  header
+    padding-top (pagePadding/2)
