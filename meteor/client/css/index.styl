@@ -1,6 +1,5 @@
-@import 'nib'
-
 @import url('http://fonts.googleapis.com/css?family=Cabin:400,700');
+@import 'animations'
 
 golden = 1.618
 smallFontSize = 14px
@@ -99,6 +98,16 @@ footer
 #footer_spacer
   height footerHeight
 
+// Animations
+
+header h2, footer
+  @extend .fadeIn1
+main
+  @extend .fadeIn2
+header h2, main
+  transform translateZ(0) // Animation fix for Safari
+
+// Responsive
 
 @media (max-width: 320px)
   header
