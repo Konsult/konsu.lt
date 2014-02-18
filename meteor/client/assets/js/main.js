@@ -52,19 +52,4 @@ $(document).ready(function(){
     }
   });
 
-
-  var $container = $('.portfolio-isotope');
-
-  $container.isotope({
-    itemSelector : '.portfolio-item',
-    resizable: true,
-    resizesContainer: true
-  });
-
-  // filter items when filter link is clicked
-  $('#filters a').click(function(){
-    var selector = $(this).attr('data-filter');
-    $container.isotope({ filter: selector });
-    return false;
-  });
 }); 
