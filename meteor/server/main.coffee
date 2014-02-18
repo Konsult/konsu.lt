@@ -8,5 +8,5 @@ Meteor.methods
     Email.send
       to: 'us@konsu.lt'
       from: email
-      subject: 'Inquiry on konsu.lt from ' + name
+      subject: 'Konsult Inquiry from ' + name
       text: message
