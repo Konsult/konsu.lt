@@ -25,3 +25,33 @@ p
 {
   text-align: left;
 }
+
+.entry-thumbnail
+{
+  overflow: hidden;
+  position: relative;
+}
+
+.entry-thumbnail .caption
+{
+  width: 100%;
+  display: block;
+  background: transparent;
+  position: absolute;
+  bottom: -100px;
+  text-align: center;
+  color: transparent;
+  font-size: 1.25em;
+  padding: 10px 0;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.entry-thumbnail:hover .caption
+{
+  bottom: 0;
+  color: #FFF;
+  background: rgba(0, 0, 0, 0.8);
+}
