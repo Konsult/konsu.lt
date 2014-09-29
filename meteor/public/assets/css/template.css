@@ -55,3 +55,8 @@ p
   color: #FFF;
   background: rgba(0, 0, 0, 0.8);
 }
+
+.section-experience .client-img
+{
+  margin: 20px 10px;
+}
