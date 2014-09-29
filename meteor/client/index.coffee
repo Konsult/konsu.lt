@@ -16,17 +16,20 @@ getPosts = () ->
       getPosts()
     Session.set 'recentWorks', result
 
+Template.projectModal.highlightedWork = () ->
+  return !!Session.get 'highlightedWork'
+
 Template.projectModalContent.portfolioTitle = () ->
-  return Session.get('highlightedWork').title
+  return Session.get('highlightedWork') && Session.get('highlightedWork').title
 
 Template.projectModalContent.firstImage = () ->
-  return Session.get('highlightedWork').imageUrls[0]
+  return Session.get('highlightedWork') && Session.get('highlightedWork').imageUrls[0]
 
 Template.projectModalContent.secondImage = () ->
-  return Session.get('highlightedWork').imageUrls[1]
+  return Session.get('highlightedWork') && Session.get('highlightedWork').imageUrls[1]
 
 Template.projectModalContent.thirdImage = () ->
-  return Session.get('highlightedWork').imageUrls[2]
+  return Session.get('highlightedWork') && Session.get('highlightedWork').imageUrls[2]
 
 Template.projectModalContent.portfolioBody = () ->
-  return Session.get('highlightedWork').body
+  return Session.get('highlightedWork') && Session.get('highlightedWork').body

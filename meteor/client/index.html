@@ -122,13 +122,7 @@
         {{> portfolio}}
 
         <!-- Project Modal -->
-        <div class="modal fade" id="project-modal" tabindex="-1" role="dialog" aria-labelledby="project-modal-label" aria-hidden="true">
-          <div class="modal-dialog">
-            {{#if highlightedWork}}
-              {{> projectModalContent}}
-            {{/if}}
-          </div>
-        </div>
+        {{> projectModal}}
 
         <section id="contact" class="section section-center section-hilite section-contact">
           <div class="container">
@@ -218,6 +212,16 @@
     <div class="scroll-to-top" data-spy="affix" data-offset-top="200"><a href="#page" class="smooth-scroll"><i class="fa fa-arrow-up"></i></a></div>
 </body>
 
+<template name="projectModal">
+  <div class="modal fade" id="project-modal" tabindex="-1" role="dialog" aria-labelledby="project-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+      {{#if highlightedWork}}
+        {{> projectModalContent}}
+      {{/if}}
+    </div>
+  </div>
+</template>
+
 <template name="projectModalContent">
   <div class="modal-content">
     <div class="modal-header">
@@ -230,13 +234,13 @@
           <div id="project-thumbnail-carousel-1" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="item active"><img class="portfolio-image" src={{firstImage}} /></div>
-              <div class="item"><img class="portfolio-image" src={{secondImage}} /></div>
-              <div class="item"><img class="portfolio-image" src={{thirdImage}} /></div>
+              {{#if secondImage}}<div class="item"><img class="portfolio-image" src={{secondImage}} /></div>{{/if}}
+              {{#if thirdImage}}<div class="item"><img class="portfolio-image" src={{thirdImage}} /></div>{{/if}}
             </div>
             <ol class="carousel-indicators">
               <li data-target="#project-thumbnail-carousel-1" data-slide-to="0" class="active"></li>
-              <li data-target="#project-thumbnail-carousel-1" data-slide-to="1"></li>
-              <li data-target="#project-thumbnail-carousel-1" data-slide-to="2"></li>
+              {{#if secondImage}}<li data-target="#project-thumbnail-carousel-1" data-slide-to="1"></li>{{/if}}
+              {{#if thirdImage}}<li data-target="#project-thumbnail-carousel-1" data-slide-to="2"></li>{{/if}}
             </ol>
             <a class="left carousel-control" href="#project-thumbnail-carousel-1" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
             <a class="right carousel-control" href="#project-thumbnail-carousel-1" data-slide="next"><span class="fa fa-chevron-right"></span></a>
@@ -256,7 +260,7 @@
   <article class="post col-md-3 col-sm-6 portfolio-item">
     <div class="entry-thumbnail" data-idx={{ id }}>
       <a href="#" class="hover-effect" data-toggle="modal" data-target="#project-modal">
-        <img src={{ thumbnailImage }} alt="" />
+        <img class="portfolio-thumb-img" src="images/transparent.gif" style="background-image: url({{ thumbnailImage }});" />
         <span class="overlay"><i class="fa fa-plus"></i></span>
       </a>
     </div>
@@ -272,58 +276,8 @@
         {{#each recentWorks}}
           {{> recentWork}}
         {{/each}}
-        <!-- <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-            <a href="#" class="hover-effect" data-toggle="modal" data-target="#project-modal">
-              <img src="images/portfolio/happyapp.jpg" alt="" />
-              <span class="overlay"><i class="fa fa-plus"></i></span>
-            </a>
-          </div>
-        </article>
-        <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-              <img src="images/portfolio/code.jpg" alt="" />
-              <div class="caption">AWS Library</div>
-          </div>
-        </article>
-        <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-              <img src="images/portfolio/roofie.jpg" alt="" />
-              <div class="caption">Wireframes</div>
-          </div>
-        </article>
-        <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-              <img src="images/portfolio/todo.jpg" alt="" />
-              <div class="caption">To-Do</div>
-          </div>
-        </article>
-        <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-              <img src="images/portfolio/billsplitter.jpg" alt="" />
-              <div class="caption">Bill Splitter</div>
-          </div>
-        </article>
-        <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-              <img src="images/portfolio/orbitz.jpg" alt="" />
-              <div class="caption">Orbitz Redesign</div>
-          </div>
-        </article>
-        <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-              <img src="images/portfolio/bv.jpg" alt="" />
-              <div class="caption">Software Architecture</div>
-          </div>
-        </article>
-        <article class="post col-md-3 col-sm-6 portfolio-item">
-          <div class="entry-thumbnail">
-              <img src="images/portfolio/fdlaw.jpg" alt="" />
-              <div class="caption">Faith Delaney Law</div>
-          </div>
-        </article> -->
       {{else}}
-        <h4>No posts!</h4>
+        <h4>There was a problem fetching current portfolio!</h4>
       {{/if}}
       </div>
     </div>

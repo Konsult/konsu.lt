@@ -27,7 +27,7 @@ Meteor.methods
           id : idx
           title : post.caption.substr(0, post.caption.indexOf('\n')).replace(/<\/?[^>]+(>|$)/g, '')
           body : post.caption.substr(post.caption.indexOf('\n')).replace(/\r?\n|\r/g, '')
-          thumbnailImage : post.photos[0].alt_sizes[3].url
+          thumbnailImage : post.photos[0].alt_sizes[2].url
           imageUrls : _.map post.photos, (photo) ->
             photo.alt_sizes[0].url
         postObj
