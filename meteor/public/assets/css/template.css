@@ -66,3 +66,7 @@ p
   background-repeat: no-repeat;
   background-size: cover;
 }
+.section-experience .client-img
+{
+  margin: 20px 10px;
+}
