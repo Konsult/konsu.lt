@@ -276,20 +276,24 @@
     <div class="modal-body">
       <article class="single-project">
         <div class="project-thumbnail">
-          <div id="project-thumbnail-carousel-1" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="item active"><img class="portfolio-image" src="images/transparent128.gif" style="background-image:url({{firstImage}}); background-size: cover; backround-repeat:no-repeat; background-position:center center" /></div>
-              {{#if secondImage}}<div class="item"><img class="portfolio-image" src="images/transparent128.gif" style="background-image:url({{secondImage}}); background-size: cover; backround-repeat:no-repeat; background-position:center center" /></div>{{/if}}
-              {{#if thirdImage}}<div class="item"><img class="portfolio-image" src="images/transparent128.gif" style="background-image:url({{thirdImage}}); background-size: cover; backround-repeat:no-repeat; background-position:center center" /></div>{{/if}}
+          {{#if secondImage}}
+            <div id="project-thumbnail-carousel-1" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="item active"><img class="portfolio-image" src="images/transparent128.gif" style="background-image:url({{firstImage}}); background-size: cover; backround-repeat:no-repeat; background-position:center center" /></div>
+                <div class="item"><img class="portfolio-image" src="images/transparent128.gif" style="background-image:url({{secondImage}}); background-size: cover; backround-repeat:no-repeat; background-position:center center" /></div>
+                {{#if thirdImage}}<div class="item"><img class="portfolio-image" src="images/transparent128.gif" style="background-image:url({{thirdImage}}); background-size: cover; backround-repeat:no-repeat; background-position:center center" /></div>{{/if}}
+              </div>
+              <ol class="carousel-indicators">
+                <li data-target="#project-thumbnail-carousel-1" data-slide-to="0" class="active"></li>
+                <li data-target="#project-thumbnail-carousel-1" data-slide-to="1"></li>
+                {{#if thirdImage}}<li data-target="#project-thumbnail-carousel-1" data-slide-to="2"></li>{{/if}}
+              </ol>
+              <a class="left carousel-control" href="#project-thumbnail-carousel-1" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+              <a class="right carousel-control" href="#project-thumbnail-carousel-1" data-slide="next"><span class="fa fa-chevron-right"></span></a>
             </div>
-            <ol class="carousel-indicators">
-              <li data-target="#project-thumbnail-carousel-1" data-slide-to="0" class="active"></li>
-              {{#if secondImage}}<li data-target="#project-thumbnail-carousel-1" data-slide-to="1"></li>{{/if}}
-              {{#if thirdImage}}<li data-target="#project-thumbnail-carousel-1" data-slide-to="2"></li>{{/if}}
-            </ol>
-            <a class="left carousel-control" href="#project-thumbnail-carousel-1" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
-            <a class="right carousel-control" href="#project-thumbnail-carousel-1" data-slide="next"><span class="fa fa-chevron-right"></span></a>
-          </div>
+          {{else}}
+            <div class="item"><img class="portfolio-image" src="images/transparent128.gif" style="background-image:url({{firstImage}}); background-size: cover; backround-repeat:no-repeat; background-position:center center" /></div>
+          {{/if}}
         </div>
         <div class="row">
           <div class="col-md-12" id="portfolio-body">
